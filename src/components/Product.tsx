@@ -18,7 +18,7 @@ export interface ProductProps {
 export const Product = ({ id, layout }: ProductProps) => {
   const { addToCart } = useContext(cartContext) as CartProviderValue;
 
-  const { query } = useRouter();
+  // const { query } = useRouter();
 
   function getPrice(obj: ComplexProduct) {
     if (typeof obj.composition === 'number') return obj.composition;
@@ -105,14 +105,16 @@ export const Product = ({ id, layout }: ProductProps) => {
           <Link href={`/shop/item/${product.id}`}>
             <div className='item__image'>
               <div className='item__pic'>
-                {query === {} ? (
-                  <img src={`images/${product.id}.jpg`} alt={product.name} />
-                ) : (
+                {
+                  // query === {} ? (
+                  //   <img src={`images/${product.id}.jpg`} alt={product.name} />
+                  // ) : (
                   <img
                     src={`../../images/${product.id}.jpg`}
                     alt={product.name}
                   />
-                )}
+                  // )
+                }
               </div>
             </div>
             <div className='item__info'>
@@ -147,14 +149,7 @@ export const Product = ({ id, layout }: ProductProps) => {
         <div className='item__image'>
           <Link href={`/shop/item/${product.id}`}>
             <div className='item__pic'>
-              {query === {} ? (
-                <img src={`images/${product.id}.jpg`} alt={product.name} />
-              ) : (
-                <img
-                  src={`../../images/${product.id}.jpg`}
-                  alt={product.name}
-                />
-              )}
+              <img src={`../../images/${product.id}.jpg`} alt={product.name} />
             </div>
           </Link>
         </div>
