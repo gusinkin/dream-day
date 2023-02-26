@@ -11,7 +11,7 @@ import {
 import { MainContainer } from '@/components/MainContainer';
 import Shop from '@/pages/shop';
 
-export default function () {
+export default function FilteredShop() {
   const { query } = useRouter();
   const str = query.tags;
   let result: string[];

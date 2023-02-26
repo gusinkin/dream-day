@@ -17,7 +17,7 @@ import { MainContainer } from '@/components/MainContainer';
 //   content: string
 // }
 
-export default function () {
+export default function ShopItem() {
   const { query } = useRouter();
   const id: number = Number(query.id);
   return (
