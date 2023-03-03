@@ -10,12 +10,21 @@ import {
 } from '../../../dataBase/complexProducts';
 import { MainContainer } from '@/components/MainContainer';
 
-// import { GetStaticProps } from 'next'
+import { GetStaticProps } from 'next';
+import { GetStaticPaths } from 'next';
 
-// type Post = {
-//   author: string
-//   content: string
-// }
+export const getStaticPaths: GetStaticPaths = () => {
+  // let paths;
+  const paths = complexProducts.map((product) => ({
+    params: { id: product.id.toString() },
+  }));
+
+  return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => ({
+  props: { ...params },
+});
 
 export default function ShopItem() {
   const { query } = useRouter();
@@ -27,15 +36,3 @@ export default function ShopItem() {
     </MainContainer>
   );
 }
-// export const getStaticProps: GetStaticProps<{ posts: Post[] }> = async (
-//   context
-// ) => {
-//   const res = await fetch('https://.../posts')
-//   const posts: Post[] = await res.json()
-
-//   return {
-//     props: {
-//       posts,
-//     },
-//   }
-// }

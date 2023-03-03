@@ -50,7 +50,7 @@ export default function Cart() {
                     <button onClick={() => decreaseQuantity(cartItem.id)}>
                       -
                     </button>
-                    {cartItem.quantity} шт
+                    <b>{cartItem.quantity} шт</b>
                     <button onClick={() => increaseQuantity(cartItem.id)}>
                       +
                     </button>
