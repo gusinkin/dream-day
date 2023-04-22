@@ -13,7 +13,7 @@ export const FilteredRoutesSection = () => {
         <ul className={styles.filteredRoutesSection__list}>
           {FilteredRoutes.map((route) => {
             return (
-              <li>
+              <li key={route.name}>
                 <Route name={route.name} link={route.link} />
               </li>
             );
