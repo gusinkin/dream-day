@@ -9,6 +9,8 @@ import { BaseBlock, baseBlocks } from '../dataBase/baseBlocks';
 import { ComplexProduct, complexProducts } from '../dataBase/complexProducts';
 import { cartContext } from '../context/CartProvider';
 import { CartProviderValue } from '../context/CartProvider';
+import styles from '@/styles/Product.module.scss';
+// import styles from '../styles/Product.module.scss';
 
 export interface ProductProps {
   id: number;
@@ -68,15 +70,19 @@ export const Product = ({ id, layout }: ProductProps) => {
 
   if (layout === 'productPage') {
     return (
-      <div className=''>
-        <div className='item__image--big'>
-          <div className='item__pic'>
-            <img src={`../../images/${product.id}.jpg`} alt={product.name} />
+      <div className={styles.Product}>
+        <div className={styles.item__image_big}>
+          <div className={styles.item__pic}>
+            <img
+              className={styles.item__img}
+              src={`../../images/complexProducts/${product.id}.jpg`}
+              alt={product.name}
+            />
           </div>
         </div>
-        <div className='item__info'>
-          <div className='item__name'>{product.name}</div>
-          <div className='item__description'>{product.description}</div>
+        <div className={styles.item__info}>
+          <div className={styles.item__name}>{product.name}</div>
+          <div className={styles.item__description}>{product.description}</div>
           <ul className='reviews__tags'>
             {product.tags.map((tag) => (
               <li className='reviews__tags-item tag tag--green' key={tag}>
@@ -84,11 +90,11 @@ export const Product = ({ id, layout }: ProductProps) => {
               </li>
             ))}
           </ul>
-          <div className='item__price'>{product.price}</div>
+          <div className={styles.item__price}>{product.price}</div>
 
-          <div className='item__buy'>
+          <div className={styles.item__buy}>
             {' '}
-            <div className='item__add-to-cart'>
+            <div className={styles.item__addtocart}>
               <button onClick={() => addToCart(product.id, 1)}>
                 В корзину
               </button>
@@ -100,62 +106,69 @@ export const Product = ({ id, layout }: ProductProps) => {
   }
   if (layout === 'productCard') {
     return (
-      <>
-        <div className='item'>
+      <div className={styles.Product}>
+        <div className={styles.item}>
           <Link href={`/shop/item/${product.id}`}>
-            <div className='item__image'>
-              <div className='item__pic'>
+            <div className={styles.item__image}>
+              <div className={styles.item__pic}>
                 {
                   // query === {} ? (
-                  //   <img src={`images/${product.id}.jpg`} alt={product.name} />
+                  //   <img src={`images/complexProducts/${product.id}.jpg`} alt={product.name} />
                   // ) : (
                   <img
-                    src={`../../images/${product.id}.jpg`}
+                    className={styles.item__img}
+                    src={`../../images/complexProducts/${product.id}.jpg`}
                     alt={product.name}
                   />
                   // )
                 }
               </div>
             </div>
-            <div className='item__info'>
-              <div className='item__name'>{product.name}</div>
-              <div className='item__description'>{product.description}</div>
-              <ul className='reviews__tags'>
+            <div className={styles.item__info}>
+              <div className={styles.item__name}>{product.name}</div>
+              <div className={styles.item__description}>
+                {product.description}
+              </div>
+              {/* <ul className='reviews__tags'>
                 {product.tags.map((tag) => (
                   <li className='reviews__tags-item tag tag--green' key={tag}>
                     {tag}
                   </li>
                 ))}
-              </ul>
-              <div className='item__price'>{product.price}</div>
+              </ul> */}
+              <div className={styles.item__price}>{product.price}</div>
             </div>
           </Link>
-          <div className='item__buy'>
+          <div className={styles.item__buy}>
             {' '}
-            {/* <div className='item__price'>{product.price}</div> */}
-            <div className='item__add-to-cart'>
+            {/* <div className={styles.item}__price'>{product.price}</div> */}
+            <div className={styles.item__addtocart}>
               <button onClick={() => addToCart(product.id, 1)}>
                 В корзину
               </button>
             </div>
           </div>
         </div>
-      </>
+      </div>
     );
   }
   return (
-    <>
-      <div className='item cart-item'>
-        <div className='item__image'>
+    <div className={styles.Product}>
+      <div className={styles.cartproduct}>
+        <div className={styles.item__image}>
           <Link href={`/shop/item/${product.id}`}>
-            <div className='item__pic'>
-              <img src={`../../images/${product.id}.jpg`} alt={product.name} />
+            <div className={styles.item__pic}>
+              <img
+                className={styles.item__img}
+                src={`../../images/complexProducts/${product.id}.jpg`}
+                alt={product.name}
+              />
             </div>
           </Link>
         </div>
-        <div className='item__info'>
-          <div className='item__name'>{product.name}</div>
-          {/* <div className='item__description'>{product.description}</div>
+        <div className={styles.item__info}>
+          <div className={styles.item__name}>{product.name}</div>
+          {/* <div className={styles.item}__description'>{product.description}</div>
           <ul className='reviews__tags'>
             {product.tags.map((tag) => (
               <li className='reviews__tags-item tag tag--green' key={tag}>
@@ -165,19 +178,10 @@ export const Product = ({ id, layout }: ProductProps) => {
           </ul> */}
         </div>
 
-        <div className='item__buy'>
-          <div className='item__price'>{product.price}</div>
-          {/* <div className='item__quantity'>
-            <button onClick={decrease}>-</button>
-            {product.quantity} шт
-            <button onClick={increase}>+</button>
-            <p>{product.quantity! * product.price!} Р</p>
-          </div> */}
-          {/* <div className='item__add-to-cart'>
-            <button onClick={removeProductFromCart}>удалить из корзины</button>
-          </div> */}
+        <div className={styles.item__buy}>
+          <div className={styles.item__price}>{product.price}</div>
         </div>
       </div>
-    </>
+    </div>
   );
 };

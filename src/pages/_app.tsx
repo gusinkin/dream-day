@@ -1,5 +1,5 @@
 import { CartProvider } from '@/context/CartProvider';
-import '@/styles/globals.css';
+import '@/styles/global.scss';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 

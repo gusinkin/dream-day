@@ -88,6 +88,10 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
               .includes(searchInputRef.current!.value.toLowerCase()) ||
             product.description
               .toLowerCase()
+              .includes(searchInputRef.current!.value.toLowerCase()) ||
+            product.tags
+              .join()
+              .toLowerCase()
               .includes(searchInputRef.current!.value.toLowerCase())
         )
       );
@@ -127,12 +131,17 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
       </div>
       <br />
       <br />
-      <input ref={searchInputRef} type='text' onChange={handleSearch} />
+      <input
+        ref={searchInputRef}
+        type='text'
+        onChange={handleSearch}
+        placeholder='Найти товар'
+      />
       <br />
       <br />
       <ul className='catalog'>
         {dynamicProducts.map((dynamicProduct) => (
-          <li key={dynamicProduct.name}>
+          <li key={dynamicProduct.id}>
             <Product id={dynamicProduct.id} layout={'productCard'} />
           </li>
         ))}

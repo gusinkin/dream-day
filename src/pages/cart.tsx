@@ -7,6 +7,7 @@ import { CartProviderValue } from '@/context/CartProvider';
 import { Product } from '@/components/Product';
 import { useState } from 'react';
 import { ComplexProductsType } from '@/dataBase/complexProducts';
+import styles from '@/styles/Cart.module.scss';
 
 export default function Cart() {
   const {
@@ -42,11 +43,11 @@ export default function Cart() {
           {!cart.length ? (
             <p>в корзине пусто</p>
           ) : (
-            <ul className='cart'>
+            <ul className=''>
               {cart.map((cartItem) => (
-                <li key={cartItem.name} className='cart-item'>
+                <li key={cartItem.id} className={styles.cartitem}>
                   <Product id={cartItem.id} layout={'cartItem'} />
-                  <div className='item__quantity'>
+                  <div className={styles.cartitem__quantity}>
                     <button onClick={() => decreaseQuantity(cartItem.id)}>
                       -
                     </button>

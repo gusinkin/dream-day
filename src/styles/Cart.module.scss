@@ -1,0 +1,18 @@
+@import './base.scss';
+
+.cartitem {
+  width: 250px;
+  text-align: center;
+  /* justify-content: space-between; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  height: 200px;
+  &__quantity {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+}
