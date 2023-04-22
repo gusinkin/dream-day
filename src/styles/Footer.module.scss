@@ -1,0 +1,86 @@
+@import './base.scss';
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 10vh;
+  // padding: rem(23px) 0;
+  background: beige;
+  &__container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: $containerWidth;
+    margin: auto auto;
+    max-width: $maxWidth;
+  }
+  // & .phone::before {
+  //   background: url(./img/icons/phone.png) no-repeat;
+  //   background-size: contain;
+  // }
+}
+
+.menu {
+  // flex: 1;
+  margin: 0 1rem;
+  // padding-top: rem(5px);
+  // padding-top: 5px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  // @include tablets {
+  //   display: none;
+  // }
+  // &--vertical {
+  //   @include tablets {
+  //     display: block;
+  //   }
+  //   .menu__list {
+  //     flex-direction: column;
+  //     @include tablets {
+  //       gap: rem(16px);
+  //     }
+  //   }
+  //   .menu__item {
+  //     @include tablets {
+  //       margin-right: 0;
+  //     }
+  //   }
+  //   .menu__link {
+  //     color: $white;
+  //     font-size: rem(36px);
+  //     font-weight: 400;
+  //     text-align: center;
+  //   }
+  // }
+  &__list {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  &__item {
+    margin-right: rem(15px);
+    margin-bottom: rem(10px);
+    // margin-right: 15px;
+    // margin-bottom: 10px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  &__link {
+    font-weight: 700;
+    white-space: nowrap;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

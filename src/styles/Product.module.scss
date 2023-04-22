@@ -10,8 +10,10 @@
   /* justify-content: space-between; */
 
   &__image {
+    // эти размеры для корзины нужны другие, надо отвязать
     width: 200px;
     height: 200px;
+    //
     margin-bottom: 10px;
     &_big {
       width: 500px;
@@ -46,10 +48,11 @@
 }
 
 .cartproduct {
-  width: 250px;
+  // width: 250px;
   text-align: center;
   /* justify-content: space-between; */
   display: flex;
+  flex: 1;
   flex-direction: row;
   align-items: center;
   gap: 20px;

@@ -1,0 +1,16 @@
+@import './base.scss';
+
+.link {
+  display: block;
+  width: 300px;
+  height: 300px;
+  border: 2px solid black;
+  font-weight: 700;
+  // white-space: nowrap;
+  color: red;
+  background-color: rgb(118, 209, 179);
+  &:hover {
+    text-decoration: underline;
+    background-color: rgb(142, 253, 216);
+  }
+}

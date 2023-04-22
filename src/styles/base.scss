@@ -12,7 +12,8 @@
   }
 }
 
-$containerWidth: 940px;
+$containerWidth: 95%;
+$maxWidth: 1140px;
 $baseFontSize: 18px;
 $z-fixed-menu: 10;
 $z-hamburger-menu: 100;
@@ -25,3 +26,26 @@ $blue: #1968b1;
 $brightYellow: #ffd517;
 $tablets: 768px;
 $phones: 480px;
+
+.section__container {
+  width: $containerWidth;
+  max-width: $maxWidth;
+  height: 100%;
+  margin: 0 auto;
+  // display: flex;
+  // flex-direction: column;
+  padding: 5% 0;
+  text-align: center;
+}
+.section__title {
+  line-height: 1.21;
+  // color: $white;
+  color: rgb(127, 126, 65);
+  margin-bottom: 50px;
+  // @include tablets {
+  //   margin-bottom: rem(8px);
+  // }
+  // @include phones {
+  //   line-height: 1;
+  // }
+}

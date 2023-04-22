@@ -10,7 +10,7 @@ import { ComplexProduct, complexProducts } from '../dataBase/complexProducts';
 import { cartContext } from '../context/CartProvider';
 import { CartProviderValue } from '../context/CartProvider';
 import styles from '@/styles/Product.module.scss';
-// import styles from '../styles/Product.module.scss';
+import cartStyles from '@/styles/Cart.module.scss';
 
 export interface ProductProps {
   id: number;
@@ -153,22 +153,22 @@ export const Product = ({ id, layout }: ProductProps) => {
     );
   }
   return (
-    <div className={styles.Product}>
-      <div className={styles.cartproduct}>
-        <div className={styles.item__image}>
-          <Link href={`/shop/item/${product.id}`}>
-            <div className={styles.item__pic}>
-              <img
-                className={styles.item__img}
-                src={`../../images/complexProducts/${product.id}.jpg`}
-                alt={product.name}
-              />
-            </div>
-          </Link>
-        </div>
-        <div className={styles.item__info}>
-          <div className={styles.item__name}>{product.name}</div>
-          {/* <div className={styles.item}__description'>{product.description}</div>
+    // <div className={styles.Product}>
+    <div className={cartStyles.cart__product}>
+      <div className={styles.item__image}>
+        <Link href={`/shop/item/${product.id}`}>
+          <div className={styles.item__pic}>
+            <img
+              className={styles.item__img}
+              src={`../../images/complexProducts/${product.id}.jpg`}
+              alt={product.name}
+            />
+          </div>
+        </Link>
+      </div>
+      <div className={styles.item__info}>
+        <div className={styles.item__name}>{product.name}</div>
+        {/* <div className={styles.item}__description'>{product.description}</div>
           <ul className='reviews__tags'>
             {product.tags.map((tag) => (
               <li className='reviews__tags-item tag tag--green' key={tag}>
@@ -176,12 +176,12 @@ export const Product = ({ id, layout }: ProductProps) => {
               </li>
             ))}
           </ul> */}
-        </div>
+      </div>
 
-        <div className={styles.item__buy}>
-          <div className={styles.item__price}>{product.price}</div>
-        </div>
+      <div className={styles.item__buy}>
+        <div className={styles.item__price}>{product.price}</div>
       </div>
     </div>
+    // </div>
   );
 };

@@ -1,7 +1,7 @@
 @import './base.scss';
 
-.section {
-  height: 100%;
+.hero {
+  height: 90vh;
   min-height: 650px;
   background-color: rgb(188, 215, 216);
   background-image: url(../../public/images/bg/hero-transparent.png);
@@ -27,11 +27,35 @@
   //     padding: 0 6%;
   //   }
   // }
-}
-.link {
-  font-weight: 700;
-  white-space: nowrap;
-  &:hover {
-    text-decoration: underline;
+  &__content {
+    width: 30%;
+    position: relative;
+    left: 65%;
+    top: 10%;
+    text-align: center;
+  }
+  &__title {
+    font-size: 3em;
+    // line-height: 1.21;
+    // color: $white;
+    color: black;
+    margin-bottom: 0.83rem;
+    // @include tablets {
+    //   margin-bottom: rem(8px);
+    // }
+    // @include phones {
+    //   line-height: 1;
+    // }
+  }
+  &__text {
+    font-size: 1.5em;
   }
 }
+
+// .link {
+//   font-weight: 700;
+//   white-space: nowrap;
+//   &:hover {
+//     text-decoration: underline;
+//   }
+// }

@@ -10,6 +10,7 @@ import { CartProviderValue } from '@/context/CartProvider';
 import { cartContext } from '@/context/CartProvider';
 import Cart from './cart';
 
+// export default function Shop(defaultTags: string[] = []) {
 export interface ShopProps {
   defaultTags: string[];
 }

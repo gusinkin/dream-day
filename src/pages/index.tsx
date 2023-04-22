@@ -1,22 +1,19 @@
 import { MainContainer } from '@/components/MainContainer';
-import styles from '@/styles/Home.module.scss';
+import { HeroSection } from '@/components/HeroSection';
+
+import styles from '@/styles/Main.module.scss';
 import Link from 'next/link';
 import Head from 'next/head';
+import { SomeSection } from '@/components/SomeSection';
+import { FilteredRoutesSection } from '@/components/FilteredRoutesSection';
 
-export default function Home() {
+export default function Main() {
   return (
     <>
       <MainContainer keywords={'домашняя страница'}>
-        <section className={styles.section}>
-          <p>Тут главная страница</p>
-          <Link className={styles.link} href={'/shop/filter/розовые'}>
-            ссылка на магазин с тэгом розовые
-          </Link>
-          <br />
-          <Link className={styles.link} href={'/shop/filter/розовые+фикс цена'}>
-            ссылка на магазин с тэгом розовые+фикс цена
-          </Link>
-        </section>
+        <HeroSection />
+        <FilteredRoutesSection />
+        <SomeSection />
       </MainContainer>
     </>
   );

@@ -30,12 +30,8 @@ export default function Cart() {
 
   return (
     <MainContainer keywords='корзина'>
-      <div>
-        <p>Тут корзина</p>
-        <b>
-          <p>ИТОГО: {amount}</p>
-        </b>
-        <button onClick={() => clearCart()}>ОЧИСТИТЬ КОРЗИНУ</button>
+      <div className={styles.cart__container}>
+        <h2 className={styles.section__title}>Корзина</h2>
         <br />
         <br />
         <br />
@@ -43,11 +39,11 @@ export default function Cart() {
           {!cart.length ? (
             <p>в корзине пусто</p>
           ) : (
-            <ul className=''>
+            <ul className={styles.cart__list}>
               {cart.map((cartItem) => (
-                <li key={cartItem.id} className={styles.cartitem}>
+                <li key={cartItem.id} className={styles.cart__item}>
                   <Product id={cartItem.id} layout={'cartItem'} />
-                  <div className={styles.cartitem__quantity}>
+                  <div className={styles.cart__quantity}>
                     <button onClick={() => decreaseQuantity(cartItem.id)}>
                       -
                     </button>
@@ -65,6 +61,10 @@ export default function Cart() {
             </ul>
           )}
         </div>
+        <b>
+          <p>ИТОГО: {amount}</p>
+        </b>
+        <button onClick={() => clearCart()}>ОЧИСТИТЬ КОРЗИНУ</button>
       </div>
     </MainContainer>
   );

@@ -1,0 +1,9 @@
+@import './base.scss';
+
+.some {
+  height: 100vh;
+  min-height: 650px;
+  background-color: rgb(53, 128, 78);
+  // background-image: url(../../public/images/bg/hero-transparent.png);
+  background-size: cover;
+}

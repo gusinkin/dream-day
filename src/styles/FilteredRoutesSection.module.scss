@@ -1,0 +1,14 @@
+@import './base.scss';
+
+.filteredRoutesSection {
+  height: 100vh;
+  min-height: 650px;
+  background-color: rgb(83, 114, 158);
+  // background-image: url(../../public/images/bg/hero-transparent.png);
+  background-size: cover;
+
+  &__list {
+    display: flex;
+    gap: 20px;
+  }
+}
