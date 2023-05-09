@@ -12,13 +12,12 @@ import { MainContainer } from '@/components/MainContainer';
 import Shop from '@/pages/shop';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { filteredRoutes } from '@/routes/filteredRoutes';
+import { FilteredRoutes } from '@/dataBase/filteredRoutes';
 
 export const getStaticPaths: GetStaticPaths = () => {
-  // const paths = complexProducts.map((product) => ({
-  //   params: { id: product.id.toString() },
-  // }));
+  const paths = FilteredRoutes.map((route) => route.link);
 
-  return { paths: filteredRoutes, fallback: false };
+  return { paths: paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => ({

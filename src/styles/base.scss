@@ -27,25 +27,36 @@ $brightYellow: #ffd517;
 $tablets: 768px;
 $phones: 480px;
 
-.section__container {
-  width: $containerWidth;
-  max-width: $maxWidth;
-  height: 100%;
-  margin: 0 auto;
-  // display: flex;
-  // flex-direction: column;
-  padding: 5% 0;
-  text-align: center;
-}
-.section__title {
-  line-height: 1.21;
-  // color: $white;
-  color: rgb(127, 126, 65);
-  margin-bottom: 50px;
-  // @include tablets {
-  //   margin-bottom: rem(8px);
-  // }
-  // @include phones {
-  //   line-height: 1;
-  // }
+.section {
+  // background-image: url(../../public/images/bg/hero-transparent.png);
+  height: 100vh;
+  min-height: 650px;
+  &:first-child {
+    padding-top: 10vh;
+  }
+  &:last-child {
+    padding-bottom: 10vh;
+  }
+  &__container {
+    width: $containerWidth;
+    max-width: $maxWidth;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 5% 0;
+    text-align: center;
+  }
+  &__title {
+    line-height: 1.21;
+    // color: $white;
+    color: rgb(127, 126, 65);
+    margin-bottom: 50px;
+    // @include tablets {
+    //   margin-bottom: rem(8px);
+    // }
+    // @include phones {
+    //   line-height: 1;
+    // }
+  }
 }

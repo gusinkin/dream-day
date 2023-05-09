@@ -5,7 +5,7 @@ import { Route } from './Route';
 
 export const FilteredRoutesSection = () => {
   return (
-    <section className={styles.filteredRoutesSection}>
+    <section className={`${styles.section} ${styles.filteredRoutesSection}`}>
       <div className={styles.section__container}>
         <h2 className={styles.section__title}>
           Тут секция с плитками-ссылками на типичные запросы
@@ -14,7 +14,7 @@ export const FilteredRoutesSection = () => {
           {FilteredRoutes.map((route) => {
             return (
               <li key={route.name}>
-                <Route name={route.name} link={route.link} />
+                <Route id={route.id} name={route.name} link={route.link} />
               </li>
             );
           })}

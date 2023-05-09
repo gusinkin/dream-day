@@ -3,9 +3,9 @@ import Link from 'next/link';
 
 export const SomeSection = () => {
   return (
-    <section className={styles.some}>
+    <section className={`${styles.section} ${styles.someSection}`}>
       <div className={styles.section__container}>
-        <h2 className={styles.section__title}>Тут eще какая-нибудь секция</h2>
+        <h2 className={styles.section__title}>О нас</h2>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. A, similique
           ea voluptates cum accusamus molestias officiis magnam totam possimus

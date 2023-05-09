@@ -32,39 +32,42 @@ export default function Cart() {
     <MainContainer keywords='корзина'>
       <div className={styles.cart__container}>
         <h2 className={styles.section__title}>Корзина</h2>
-        <br />
-        <br />
-        <br />
         <div>
           {!cart.length ? (
             <p>в корзине пусто</p>
           ) : (
-            <ul className={styles.cart__list}>
-              {cart.map((cartItem) => (
-                <li key={cartItem.id} className={styles.cart__item}>
-                  <Product id={cartItem.id} layout={'cartItem'} />
-                  <div className={styles.cart__quantity}>
-                    <button onClick={() => decreaseQuantity(cartItem.id)}>
-                      -
-                    </button>
-                    <b>{cartItem.quantity} шт</b>
-                    <button onClick={() => increaseQuantity(cartItem.id)}>
-                      +
-                    </button>
-                    <p>{cartItem.quantity! * cartItem.price!} Р</p>
-                    <button onClick={() => removeFromCart(cartItem.id)}>
-                      удалить из корзины
-                    </button>
-                  </div>
-                </li>
-              ))}
-            </ul>
+            <>
+              <ul className={styles.cart__list}>
+                {cart.map((cartItem) => (
+                  <li key={cartItem.id} className={styles.cart__item}>
+                    <Product id={cartItem.id} layout={'cartItem'} />
+                    <div className={styles.cart__quantity}>
+                      <button onClick={() => decreaseQuantity(cartItem.id)}>
+                        -
+                      </button>
+                      <b>{cartItem.quantity} шт</b>
+                      <button onClick={() => increaseQuantity(cartItem.id)}>
+                        +
+                      </button>
+                      <p>{cartItem.quantity! * cartItem.price!} Р</p>
+                      <button onClick={() => removeFromCart(cartItem.id)}>
+                        удалить из корзины
+                      </button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <b>
+                <p>ИТОГО: {amount}</p>
+              </b>
+
+              <Link href='/order'> Перейти к оформлению</Link>
+              <br />
+              <br />
+              <button onClick={() => clearCart()}>ОЧИСТИТЬ КОРЗИНУ</button>
+            </>
           )}
         </div>
-        <b>
-          <p>ИТОГО: {amount}</p>
-        </b>
-        <button onClick={() => clearCart()}>ОЧИСТИТЬ КОРЗИНУ</button>
       </div>
     </MainContainer>
   );

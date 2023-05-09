@@ -1,13 +1,26 @@
 import Link from 'next/link';
 import styles from '@/styles/Header.module.scss';
 
-export const Header = () => {
+interface HeaderProps {
+  hidden: boolean;
+  colored: boolean;
+}
+
+export const Header = ({ hidden, colored }: HeaderProps) => {
   return (
-    <div className={styles.header}>
+    <div
+      className={
+        hidden
+          ? `${styles.header} ${styles.hidden}`
+          : colored
+          ? `${styles.header} ${styles.colored}`
+          : styles.header
+      }
+    >
       <div className={styles.header__container}>
-        <Link className={styles.logo} href='/'>
+        {/* <Link className={styles.logo} href='/'>
           <img className={styles.logo} src={''} alt='logo' />
-        </Link>
+        </Link> */}
         <nav className={styles.menu}>
           <ul className={styles.menu__list}>
             <li className={styles.menu__item}>
@@ -27,9 +40,9 @@ export const Header = () => {
             </li>
           </ul>
         </nav>{' '}
-        <Link className={styles.logo} href='/cart'>
+        {/* <Link className={styles.logo} href='/cart'>
           <img className={styles.logo} src={''} alt='logo' />
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

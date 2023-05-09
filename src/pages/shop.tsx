@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import { CartProviderValue } from '@/context/CartProvider';
 import { cartContext } from '@/context/CartProvider';
 import Cart from './cart';
+import styles from '@/styles/Shop.module.scss';
 
 // export default function Shop(defaultTags: string[] = []) {
 export interface ShopProps {
@@ -104,50 +105,52 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
 
   return (
     <MainContainer keywords={'каталог'}>
-      <div>
-        <p>Тут магазин</p>
-      </div>
-      <br />
-      <br />
-      <div>
-        <ul className='controls'>
-          {tags.map((item, index) => (
-            <li className='controls__item' key={item}>
-              <label className='control__elem'>
-                <input
-                  type='checkbox'
-                  name='tags'
-                  value={item}
-                  className='controls__checkbox'
-                  ref={(element: HTMLInputElement) =>
-                    (tagsRef.current[index] = element)
-                  }
-                  onChange={handleTags}
-                />
-                <div className='tag controls__tag'>{item}</div>
-              </label>
+      <div className={styles.section__container}>
+        <div>
+          <p>Тут магазин</p>
+        </div>
+        <br />
+        <br />
+        <div>
+          <ul className='controls'>
+            {tags.map((item, index) => (
+              <li className='controls__item' key={item}>
+                <label className='control__elem'>
+                  <input
+                    type='checkbox'
+                    name='tags'
+                    value={item}
+                    className='controls__checkbox'
+                    ref={(element: HTMLInputElement) =>
+                      (tagsRef.current[index] = element)
+                    }
+                    onChange={handleTags}
+                  />
+                  <div className='tag controls__tag'>{item}</div>
+                </label>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <br />
+        <br />
+        <input
+          ref={searchInputRef}
+          type='text'
+          onChange={handleSearch}
+          placeholder='Найти товар'
+        />
+        <br />
+        <br />
+        <ul className={styles.catalog}>
+          {dynamicProducts.map((dynamicProduct) => (
+            <li key={dynamicProduct.id}>
+              <Product id={dynamicProduct.id} layout={'productCard'} />
             </li>
           ))}
         </ul>
-      </div>
-      <br />
-      <br />
-      <input
-        ref={searchInputRef}
-        type='text'
-        onChange={handleSearch}
-        placeholder='Найти товар'
-      />
-      <br />
-      <br />
-      <ul className='catalog'>
-        {dynamicProducts.map((dynamicProduct) => (
-          <li key={dynamicProduct.id}>
-            <Product id={dynamicProduct.id} layout={'productCard'} />
-          </li>
-        ))}
-      </ul>
-      {/* <Cart /> */}
+        {/* <Cart /> */}
+      </div>{' '}
     </MainContainer>
   );
 }

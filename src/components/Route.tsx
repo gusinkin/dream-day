@@ -3,10 +3,15 @@ import Link from 'next/link';
 import { FilteredRoute } from '@/dataBase/filteredRoutes';
 
 export const Route = (props: FilteredRoute) => {
-  const { name, link } = props;
+  const { id, name, link } = props;
   return (
     <Link className={styles.link} href={link}>
-      {name}
+      <img
+        className={styles.link__img}
+        src={`../../images/complexProducts/${id}.jpg`}
+        alt={name}
+      />
+      <div className={styles.link__text}>{name}</div>
     </Link>
   );
 };
