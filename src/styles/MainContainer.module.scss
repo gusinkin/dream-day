@@ -15,7 +15,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(135deg, rgb(255, 255, 255), rgb(212, 212, 212));
+    background: linear-gradient(135deg, rgb(255, 255, 255), rgb(137, 138, 146));
     background-size: cover;
     z-index: 4;
   }
@@ -35,9 +35,9 @@
     // opacity: 0.5;
   }
 }
-// .transparent::after {
-//   opacity: 0.5;
-// }
+.dark::after {
+  opacity: 0.5;
+}
 .content {
   width: 100%;
   // max-width: $maxWidth;
@@ -53,6 +53,6 @@
   background-color: rgba(127, 127, 127, 0);
   transition: background-color 500ms ease-in-out;
 }
-.dark {
-  background-color: rgba(127, 127, 127, 0.2);
-}
+// .dark {
+//   background-color: rgba(127, 127, 127, 0.4);
+// }

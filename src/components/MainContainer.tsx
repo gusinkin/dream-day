@@ -28,8 +28,6 @@ export const MainContainer = ({
     up: true,
   });
   const { pathname } = useRouter();
-  // const str = query.tags;
-  console.log(pathname);
   const handleScroll = (event: Event) => {
     setScrollStatus((prev) => {
       return {
@@ -70,19 +68,17 @@ export const MainContainer = ({
   return (
     <>
       <div
-        // className={
-        //   backgroundDark
-        //     ? `${styles.wrapper} ${styles.Dark}`
-        //     : styles.wrapper
-        // }
-        className={styles.wrapper}
+        className={
+          backgroundDark ? `${styles.wrapper} ${styles.dark}` : styles.wrapper
+        }
+        // className={styles.wrapper}
       >
         <Header hidden={headerHidden} colored={headerColored} />
         <div
-          // className={styles.content}
-          className={
-            backgroundDark ? `${styles.content} ${styles.dark}` : styles.content
-          }
+          className={styles.content}
+          // className={
+          //   backgroundDark ? `${styles.content} ${styles.dark}` : styles.content
+          // }
         >
           {children}
         </div>

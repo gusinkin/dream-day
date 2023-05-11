@@ -143,7 +143,10 @@ export const Product = ({ id, layout }: ProductProps) => {
             {' '}
             {/* <div className={styles.item}__price'>{product.price}</div> */}
             <div className={styles.item__addtocart}>
-              <button onClick={() => addToCart(product.id, 1)}>
+              <button
+                className={styles.button}
+                onClick={() => addToCart(product.id, 1)}
+              >
                 В корзину
               </button>
             </div>
