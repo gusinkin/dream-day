@@ -3,9 +3,93 @@ import { TextField } from '@mui/material';
 
 import styles from '@/styles/Order.module.scss';
 import Link from 'next/link';
-// import Head from 'next/head';
+import { DateTimePicker } from '@mui/x-date-pickers';
+import dayjs, { Dayjs } from 'dayjs';
+import { useState } from 'react';
+import { useIMask } from 'react-imask';
 
 export default function Order() {
+  const initialDate = dayjs()
+    .hour(dayjs().hour() + 2)
+    .minute(dayjs().minute() - (dayjs().minute() % 15));
+
+  const [dateTime, setDateTime] = useState<Dayjs>(initialDate);
+  const [dateTimeError, setDateTimeError] = useState<string>('');
+
+  const maxDate = dayjs().month(dayjs().month() + 1);
+
+  const isToday =
+    dayjs(initialDate).date() === dayjs(dateTime).date() &&
+    dayjs(initialDate).month() === dayjs(dateTime).month();
+
+  const minTime = isToday
+    ? dayjs(initialDate).minute(dayjs(initialDate).minute() - 1)
+    : dayjs(dateTime).hour(7).minute(0);
+
+  const maxTime = dayjs(dateTime).hour(23).minute(0);
+  // any
+  const onSelectDateTime = (event: any) => {
+    setDateTime(event.$d);
+  };
+
+  const onDateTimeError = (error: string | null) => {
+    switch (error) {
+      case null: {
+        setDateTimeError('');
+        break;
+      }
+      case 'minutesStep': {
+        // приделать debounce
+        setDateTimeError('Пожалуйста, укажите время, кратное 15 минутам');
+        break;
+      }
+      case 'minTime': {
+        setDateTimeError('Пожалуйста, выберите более позднее время');
+        break;
+      }
+      case 'maxTime': {
+        setDateTimeError('Пожалуйста, выберите более раннее время');
+        break;
+      }
+      case 'disablePast': {
+        setDateTimeError('Пожалуйста, выберите предстоящую дату');
+        break;
+      }
+      case 'maxDate': {
+        setDateTimeError('Пожалуйста, выберите более близкую дату');
+        break;
+      }
+      case 'invalidDate': {
+        setDateTimeError('Пожалуйста, выберите действительную дату');
+        break;
+      }
+      default:
+        setDateTimeError(error);
+    }
+  };
+
+  // const [phoneNumber, setPhoneNumber] = useState<string>('');
+  // const onPhoneComplete = (value: string) => {
+  //   setPhoneNumber(value);
+  // };
+
+  // const {
+  //   ref: phoneRef,
+  //   // maskRef,
+  //   value: phoneValue,
+  //   setValue: setPhoneValue,
+  //   // unmaskedValue,
+  //   // setUnmaskedValue,
+  //   // typedValue,
+  //   // setTypedValue,
+  // } = useIMask(
+  //   {
+  //     // mask: '{+7}(000)000-00-00',
+  //     mask: Date,
+  //   },
+  //   { onComplete: onPhoneComplete }
+  // );
+
   return (
     <>
       <MainContainer keywords={'оформление заказа'}>
@@ -16,8 +100,6 @@ export default function Order() {
               <input type='hidden' name='to' value='some@mail.com' />
 
               <TextField
-                // fullWidth
-                // variant='standard'
                 required
                 label='Ваше имя'
                 type='text'
@@ -29,29 +111,24 @@ export default function Order() {
                   width: '400px',
                   alignSelf: 'center',
                 }}
-                // error={errors.name ? true : false}
-                // helperText={errors.name ? errors.name.message : ' '}
               />
               <TextField
-                // fullWidth
-                // variant='standard'
                 required
                 label='Номер телефона'
                 type='phone'
-                id='phone'
-                name='phone'
-                placeholder='+7 (999) 000-00-00'
+                // id='phone'
+                // name='phone'
+                // placeholder='+7 (999) 000-00-00'
                 sx={{
                   marginBottom: '10px',
                   width: '400px',
                   alignSelf: 'center',
                 }}
-                // error={errors.name ? true : false}
-                // helperText={errors.name ? errors.name.message : ' '}
+                // ref={phoneRef}
+                // value={phoneValue}
+                // onChange={setPhoneValue}
               />
               <TextField
-                // fullWidth
-                // variant='standard'
                 label='Адрес доставки'
                 type='text'
                 id='address'
@@ -62,28 +139,31 @@ export default function Order() {
                   width: '400px',
                   alignSelf: 'center',
                 }}
-                // error={errors.name ? true : false}
-                // helperText={errors.name ? errors.name.message : ' '}
               />
-              <TextField
-                // fullWidth
-                // variant='standard'
+              <DateTimePicker
                 label='Дата и время доставки'
-                type='text'
-                id='datetime'
-                name='datetime'
-                placeholder='вчера'
+                ampm={false}
+                disablePast={true}
+                maxDate={maxDate}
+                minTime={minTime}
+                maxTime={maxTime}
+                value={dateTime}
+                onChange={onSelectDateTime}
+                onError={onDateTimeError}
+                views={['day', 'hours', 'minutes']}
+                minutesStep={15}
                 sx={{
                   marginBottom: '10px',
                   width: '400px',
                   alignSelf: 'center',
                 }}
-                // error={errors.name ? true : false}
-                // helperText={errors.name ? errors.name.message : ' '}
+                slotProps={{
+                  textField: {
+                    helperText: dateTimeError,
+                  },
+                }}
               />
               <TextField
-                // fullWidth
-                // variant='standard'
                 label='E-mail'
                 type='email'
                 id='email'
@@ -94,12 +174,8 @@ export default function Order() {
                   width: '400px',
                   alignSelf: 'center',
                 }}
-                // error={errors.name ? true : false}
-                // helperText={errors.name ? errors.name.message : ' '}
               />
               <TextField
-                // fullWidth
-                // variant='standard'
                 label='Комментарий к заказу'
                 multiline
                 type='text'
@@ -111,8 +187,6 @@ export default function Order() {
                   width: '400px',
                   alignSelf: 'center',
                 }}
-                // error={errors.name ? true : false}
-                // helperText={errors.name ? errors.name.message : ' '}
               />
               <div className='form__controls'>
                 <label className='radio'>

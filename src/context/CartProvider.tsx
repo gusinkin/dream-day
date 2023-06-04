@@ -3,8 +3,9 @@ import type {
   ComplexProductsType,
 } from '@/dataBase/complexProducts';
 import { complexProducts } from '@/dataBase/complexProducts';
-import React, { createContext, Dispatch, useState } from 'react';
+import React, { createContext, Dispatch, useEffect, useState } from 'react';
 import { baseBlocks } from '@/dataBase/baseBlocks';
+import { loadState } from './localStorage';
 
 export interface CartProviderValue {
   cart: ComplexProductsType;
@@ -14,13 +15,18 @@ export interface CartProviderValue {
   decreaseQuantity: (id: number) => void;
   countTotal: (cart: ComplexProductsType) => number;
   clearCart: () => void;
+  getCartFromLocalStorage: () => void;
 }
 export const cartContext = createContext<CartProviderValue | null>(null);
-
 // надо бы убрать тип any
 export function CartProvider({ children }: any) {
+  const initialCart: ComplexProductsType = loadState();
   const [cart, setCart] = useState<ComplexProductsType>([]);
   const Provider = cartContext.Provider;
+
+  useEffect(() => {
+    setCart(initialCart);
+  }, []);
 
   // тут дублирование, как по другому сделать я не придумал, эта функция скопирована из компонента Product
   // получается эта функция считает цену в каждом продукте, а тут для каждого продукта в корзине еще раз
@@ -93,6 +99,17 @@ export function CartProvider({ children }: any) {
     setCart([]);
   }
 
+  function getCartFromLocalStorage() {
+    console.log('getCartFromLocalStorage in context');
+    const state = loadState();
+    console.log('state', state);
+    setCart(state);
+  }
+  // useEffect(() => {
+  //   console.log('getCartFromLocalStorage');
+  //   getCartFromLocalStorage();
+  // }, []);
+
   return (
     <Provider
       value={{
@@ -103,6 +120,7 @@ export function CartProvider({ children }: any) {
         decreaseQuantity,
         countTotal,
         clearCart,
+        getCartFromLocalStorage,
       }}
     >
       {children}

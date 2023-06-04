@@ -105,10 +105,13 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
 
   return (
     <MainContainer keywords={'каталог'}>
-      <div className={styles.section__container}>
-        <div>
-          <p>Тут магазин</p>
-        </div>
+      <div className={styles.page__container}>
+        <input
+          ref={searchInputRef}
+          type='text'
+          onChange={handleSearch}
+          placeholder='Найти товар'
+        />
         <br />
         <br />
         <div>
@@ -134,14 +137,7 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
         </div>
         <br />
         <br />
-        <input
-          ref={searchInputRef}
-          type='text'
-          onChange={handleSearch}
-          placeholder='Найти товар'
-        />
-        <br />
-        <br />
+
         <ul className={styles.catalog}>
           {dynamicProducts.map((dynamicProduct) => (
             <li key={dynamicProduct.id}>

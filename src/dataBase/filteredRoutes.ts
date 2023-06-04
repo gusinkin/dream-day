@@ -3,7 +3,7 @@ export interface FilteredRoute {
   name: string;
   link: string;
 }
-export const FilteredRoutes: FilteredRoute[] = [
+export const filteredRoutes: FilteredRoute[] = [
   { id: 0, name: 'девочке', link: '/shop/filter/девочке' },
   { id: 1, name: 'день рождения', link: '/shop/filter/день рождения' },
   { id: 2, name: 'мальчику', link: '/shop/filter/мальчику' },

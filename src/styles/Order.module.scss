@@ -13,3 +13,32 @@
   flex-direction: column;
   width: 100%;
 }
+
+// @-webkit-keyframes autofill {
+//   to {
+//     color: #000;
+//     background: transparent;
+//   }
+// }
+
+// input:-webkit-autofill {
+//   -webkit-animation-name: autofill;
+//   -webkit-animation-fill-mode: both;
+// }
+// input:-internal-autofill-selected {
+//   appearance: menulist-button;
+//   background-image: none !important;
+//   background-color: -internal-light-dark(
+//     rgba(232, 240, 254, 0),
+//     rgba(70, 90, 126, 0)
+//   ) !important;
+//   color: fieldtext !important;
+// }
+
+.MuiFormLabel-filled {
+  background: transparent !important;
+}
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+  background: transparent !important;
+}

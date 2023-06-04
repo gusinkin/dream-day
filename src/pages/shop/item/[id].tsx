@@ -31,7 +31,7 @@ export default function ShopItem() {
   const id: number = Number(query.id);
   return (
     <MainContainer keywords={'товар'}>
-      <div>товар номер {id}</div>
+      {/* <div>товар номер {id}</div> */}
       <Product id={id} layout={'productPage'} />
     </MainContainer>
   );

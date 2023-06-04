@@ -66,25 +66,22 @@ export const MainContainer = ({
   }, [scrollStatus]);
 
   return (
-    <>
+    <div
+      className={
+        backgroundDark ? `${styles.wrapper} ${styles.dark}` : styles.wrapper
+      }
+      // className={styles.wrapper}
+    >
+      <Header hidden={headerHidden} colored={headerColored} />
       <div
-        className={
-          backgroundDark ? `${styles.wrapper} ${styles.dark}` : styles.wrapper
-        }
-        // className={styles.wrapper}
+        className={styles.content}
+        // className={
+        //   backgroundDark ? `${styles.content} ${styles.dark}` : styles.content
+        // }
       >
-        <Header hidden={headerHidden} colored={headerColored} />
-        <div
-          className={styles.content}
-          // className={
-          //   backgroundDark ? `${styles.content} ${styles.dark}` : styles.content
-          // }
-        >
-          {children}
-        </div>
-        <Footer />
+        {children}
       </div>
-      {/* <div className={styles.something}></div> */}
-    </>
+      <Footer />
+    </div>
   );
 };

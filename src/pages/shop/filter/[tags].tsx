@@ -11,11 +11,11 @@ import {
 import { MainContainer } from '@/components/MainContainer';
 import Shop from '@/pages/shop';
 import { GetStaticProps, GetStaticPaths } from 'next';
-import { filteredRoutes } from '@/routes/filteredRoutes';
-import { FilteredRoutes } from '@/dataBase/filteredRoutes';
+// import { filteredRoutes } from '@/routes/filteredRoutes';
+import { filteredRoutes } from '@/dataBase/filteredRoutes';
 
 export const getStaticPaths: GetStaticPaths = () => {
-  const paths = FilteredRoutes.map((route) => route.link);
+  const paths = filteredRoutes.map((route) => route.link);
 
   return { paths: paths, fallback: false };
 };

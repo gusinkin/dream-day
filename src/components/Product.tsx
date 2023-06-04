@@ -70,34 +70,39 @@ export const Product = ({ id, layout }: ProductProps) => {
 
   if (layout === 'productPage') {
     return (
-      <div className={styles.Product}>
-        <div className={styles.item__image_big}>
-          <div className={styles.item__pic}>
-            <img
-              className={styles.item__img}
-              src={`../../images/complexProducts/${product.id}.jpg`}
-              alt={product.name}
-            />
+      <div className={styles.section__container}>
+        <div className={styles.productPage}>
+          <div className={styles.productPage__image}>
+            <div className={styles.item__pic}>
+              <img
+                className={styles.item__img}
+                src={`../../images/complexProducts/${product.id}.jpg`}
+                alt={product.name}
+              />
+            </div>
           </div>
-        </div>
-        <div className={styles.item__info}>
-          <div className={styles.item__name}>{product.name}</div>
-          <div className={styles.item__description}>{product.description}</div>
-          <ul className='reviews__tags'>
-            {product.tags.map((tag) => (
-              <li className='reviews__tags-item tag tag--green' key={tag}>
-                {tag}
-              </li>
-            ))}
-          </ul>
-          <div className={styles.item__price}>{product.price}</div>
+          <div className={styles.productPage__info}>
+            <div className={styles.item__name}>{product.name}</div>
+            <div className={styles.item__description}>
+              {product.description}
+            </div>
+            <p>Теги для поиска:</p>
+            <ul className={styles.productPage__tags}>
+              {product.tags.map((tag) => (
+                <li className={styles.tag} key={tag}>
+                  {tag}
+                </li>
+              ))}
+            </ul>
+            <div className={styles.item__price}>{product.price}</div>
 
-          <div className={styles.item__buy}>
-            {' '}
-            <div className={styles.item__addtocart}>
-              <button onClick={() => addToCart(product.id, 1)}>
-                В корзину
-              </button>
+            <div className={styles.item__buy}>
+              {' '}
+              <div className={styles.item__addtocart}>
+                <button onClick={() => addToCart(product.id, 1)}>
+                  В корзину
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -106,7 +111,7 @@ export const Product = ({ id, layout }: ProductProps) => {
   }
   if (layout === 'productCard') {
     return (
-      <div className={styles.Product}>
+      <div className={styles.productCard}>
         <div className={styles.item}>
           <Link href={`/shop/item/${product.id}`}>
             <div className={styles.item__image}>
@@ -126,9 +131,9 @@ export const Product = ({ id, layout }: ProductProps) => {
             </div>
             <div className={styles.item__info}>
               <div className={styles.item__name}>{product.name}</div>
-              <div className={styles.item__description}>
+              {/* <div className={styles.item__description}>
                 {product.description}
-              </div>
+              </div> */}
               {/* <ul className='reviews__tags'>
                 {product.tags.map((tag) => (
                   <li className='reviews__tags-item tag tag--green' key={tag}>

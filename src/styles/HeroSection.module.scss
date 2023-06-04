@@ -1,7 +1,7 @@
 @import './base.scss';
 
 .heroSection {
-  min-height: 650px;
+  // min-height: 650px;
   // background-color: rgb(188, 215, 216);
   // background-image: url(../../public/images/bg/hero-transparent.png);
   background-size: cover;
@@ -29,8 +29,8 @@
   &__content {
     // width: 25%;
     // left: 70%;
-    width: 30%;
-    left: 67%;
+    width: 33%;
+    left: 65%;
 
     top: 20%;
     position: relative;

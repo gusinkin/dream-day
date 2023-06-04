@@ -1,6 +1,13 @@
 import styles from '@/styles/HeroSection.module.scss';
 
 export const HeroSection = () => {
+  const scrollDown = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <section className={`${styles.section} ${styles.heroSection}`}>
       {/* <div className={styles.section__container}> */}
@@ -17,7 +24,9 @@ export const HeroSection = () => {
           КОМПОЗИЦИИ ИЗ ВОЗДУШНЫХ ШАРОВ, ФОТОЗОНЫ, ОФОРМЛЯЕМ ПРАЗДНИКИ И
           МЕРОПРИЯТИЯ. НАША ЗАДАЧА – СДЕЛАТЬ ВАШ ПРАЗДНИК ЯРЧЕ!
         </p>
-        <button className={styles.button}>ПОДОБРАТЬ ШАРИКИ</button>
+        <button className={styles.button} onClick={scrollDown}>
+          ПОДОБРАТЬ ШАРИКИ
+        </button>
       </div>
       {/* </div> */}
     </section>

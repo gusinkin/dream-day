@@ -8,15 +8,18 @@ import { Product } from '@/components/Product';
 import { useState } from 'react';
 import { ComplexProductsType } from '@/dataBase/complexProducts';
 import styles from '@/styles/Cart.module.scss';
+import { saveState } from '@/context/localStorage';
 
 export default function Cart() {
   const {
     cart,
+    addToCart,
     removeFromCart,
     increaseQuantity,
     decreaseQuantity,
     countTotal,
     clearCart,
+    getCartFromLocalStorage,
   } = useContext(cartContext) as CartProviderValue;
   const [amount, setAmount] = useState(0);
 
@@ -26,6 +29,7 @@ export default function Cart() {
 
   useEffect(() => {
     setAmount(countTotal(cart));
+    saveState(cart);
   }, [cart]);
 
   return (

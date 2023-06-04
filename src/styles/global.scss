@@ -114,3 +114,6 @@ ul {
   cursor: pointer;
   margin: 5px;
 }
+input:-webkit-autofill {
+  transition: all 50000s ease-in-out 50000s;
+}

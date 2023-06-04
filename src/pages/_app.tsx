@@ -2,6 +2,12 @@ import { CartProvider } from '@/context/CartProvider';
 import '@/styles/global.scss';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import 'dayjs/locale/ru';
+import { ThemeProvider } from '@mui/material';
+import type {} from '@mui/x-date-pickers/themeAugmentation';
+import { theme } from '@/context/clockTheme';
 
 // вопрос по Head, должен ли он быть разным на разных страницах, например ключевые слова
 export default function App({ Component, pageProps }: AppProps) {
@@ -14,9 +20,13 @@ export default function App({ Component, pageProps }: AppProps) {
         {/* <meta keywords={'шары, композиции' + keywords} /> */}
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <CartProvider>
-        <Component {...pageProps} />
-      </CartProvider>
+      <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='ru'>
+        <ThemeProvider theme={theme}>
+          <CartProvider>
+            <Component {...pageProps} />
+          </CartProvider>
+        </ThemeProvider>
+      </LocalizationProvider>
     </>
   );
 }

@@ -2,16 +2,21 @@
 
 .filteredRoutesSection {
   height: 100vh;
-  min-height: 650px;
+  // min-height: 650px;
   // background-color: rgb(83, 114, 158);
   // background-image: url(../../public/images/bg/hero-transparent.png);
   background-size: cover;
 
   &__list {
-    flex: 1;
+    // flex: 1;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 2.5vw;
+    // gap: 1fr;
+  }
+  &__item {
+    // aspect-ratio: 1 / 1.25;
+    aspect-ratio: 1 / 1;
   }
 }

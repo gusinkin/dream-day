@@ -8,7 +8,7 @@ export const Route = (props: FilteredRoute) => {
     <Link className={styles.link} href={link}>
       <img
         className={styles.link__img}
-        src={`../../images/complexProducts/${id}.jpg`}
+        src={`../../images/filteredRoutes/${id}.jpg`}
         alt={name}
       />
       <div className={styles.link__text}>{name}</div>
