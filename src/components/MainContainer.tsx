@@ -6,7 +6,7 @@ import { CartProvider } from '../context/CartProvider';
 import styles from '@/styles/MainContainer.module.scss';
 import { Header } from './Header';
 import { Footer } from './Footer';
-import { useEffect, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import path from 'path';
 
@@ -16,7 +16,7 @@ export const MainContainer = ({
   children,
   keywords,
 }: {
-  children: any;
+  children: ReactElement | ReactElement[];
   keywords: string;
 }) => {
   const [headerHidden, setHeaderHidden] = useState(false);
@@ -67,9 +67,7 @@ export const MainContainer = ({
 
   return (
     <div
-      className={
-        backgroundDark ? `${styles.wrapper} ${styles.dark}` : styles.wrapper
-      }
+      className={backgroundDark ? `${styles.wrapper} ${styles.dark}` : styles.wrapper}
       // className={styles.wrapper}
     >
       <Header hidden={headerHidden} colored={headerColored} />

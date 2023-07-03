@@ -20,7 +20,6 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
   const [dynamicProducts, setDynamicProducts] = useState(complexProducts);
 
   const [tagsHaveBeenClicked, setTagsHaveBeenClicked] = useState(false);
-
   const tagsRef = useRef<HTMLInputElement[]>([]);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
@@ -46,9 +45,7 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
     }
 
     function collectTags() {
-      return tagsRef.current
-        .filter((tag) => tag.checked === true)
-        .map((tag) => tag.value);
+      return tagsRef.current.filter((tag) => tag.checked === true).map((tag) => tag.value);
     }
 
     let tagsChecked = collectTags();
@@ -85,16 +82,11 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
       setDynamicProducts(
         complexProducts.filter(
           (product) =>
-            product.name
-              .toLowerCase()
-              .includes(searchInputRef.current!.value.toLowerCase()) ||
+            product.name.toLowerCase().includes(searchInputRef.current!.value.toLowerCase()) ||
             product.description
               .toLowerCase()
               .includes(searchInputRef.current!.value.toLowerCase()) ||
-            product.tags
-              .join()
-              .toLowerCase()
-              .includes(searchInputRef.current!.value.toLowerCase())
+            product.tags.join().toLowerCase().includes(searchInputRef.current!.value.toLowerCase())
         )
       );
     } else {
@@ -106,12 +98,7 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
   return (
     <MainContainer keywords={'каталог'}>
       <div className={styles.page__container}>
-        <input
-          ref={searchInputRef}
-          type='text'
-          onChange={handleSearch}
-          placeholder='Найти товар'
-        />
+        <input ref={searchInputRef} type='text' onChange={handleSearch} placeholder='Найти товар' />
         <br />
         <br />
         <div>
@@ -124,9 +111,7 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
                     name='tags'
                     value={item}
                     className='controls__checkbox'
-                    ref={(element: HTMLInputElement) =>
-                      (tagsRef.current[index] = element)
-                    }
+                    ref={(element: HTMLInputElement) => (tagsRef.current[index] = element)}
                     onChange={handleTags}
                   />
                   <div className='tag controls__tag'>{item}</div>
@@ -146,7 +131,7 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
           ))}
         </ul>
         {/* <Cart /> */}
-      </div>{' '}
+      </div>
     </MainContainer>
   );
 }

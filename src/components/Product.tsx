@@ -11,6 +11,7 @@ import { cartContext } from '../context/CartProvider';
 import { CartProviderValue } from '../context/CartProvider';
 import styles from '@/styles/Product.module.scss';
 import cartStyles from '@/styles/Cart.module.scss';
+import { Snackbar } from '@mui/material';
 
 export interface ProductProps {
   id: number;
@@ -19,6 +20,7 @@ export interface ProductProps {
 
 export const Product = ({ id, layout }: ProductProps) => {
   const { addToCart } = useContext(cartContext) as CartProviderValue;
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
 
   // const { query } = useRouter();
 
@@ -27,8 +29,7 @@ export const Product = ({ id, layout }: ProductProps) => {
     let result: number = 0;
     for (let position in obj.composition) {
       result +=
-        baseBlocks.find((block) => block.name === position)!.price *
-        obj.composition[position];
+        baseBlocks.find((block) => block.name === position)!.price * obj.composition[position];
     }
     return result;
   }
@@ -47,6 +48,13 @@ export const Product = ({ id, layout }: ProductProps) => {
     // }
     return result;
   }
+
+  const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setSnackbarOpen(false);
+  };
 
   const product = createProduct(id);
 
@@ -83,9 +91,7 @@ export const Product = ({ id, layout }: ProductProps) => {
           </div>
           <div className={styles.productPage__info}>
             <div className={styles.item__name}>{product.name}</div>
-            <div className={styles.item__description}>
-              {product.description}
-            </div>
+            <div className={styles.item__description}>{product.description}</div>
             <p>Теги для поиска:</p>
             <ul className={styles.productPage__tags}>
               {product.tags.map((tag) => (
@@ -99,12 +105,25 @@ export const Product = ({ id, layout }: ProductProps) => {
             <div className={styles.item__buy}>
               {' '}
               <div className={styles.item__addtocart}>
-                <button onClick={() => addToCart(product.id, 1)}>
+                <button
+                  onClick={() => {
+                    addToCart(product.id, 1);
+                    setSnackbarOpen(true);
+                  }}
+                >
                   В корзину
                 </button>
               </div>
             </div>
           </div>
+
+          <Snackbar
+            open={snackbarOpen}
+            autoHideDuration={2000}
+            onClose={handleClose}
+            message={'Добавлено в корзину!'}
+            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+          />
         </div>
       </div>
     );
@@ -150,13 +169,23 @@ export const Product = ({ id, layout }: ProductProps) => {
             <div className={styles.item__addtocart}>
               <button
                 className={styles.button}
-                onClick={() => addToCart(product.id, 1)}
+                onClick={() => {
+                  addToCart(product.id, 1);
+                  setSnackbarOpen(true);
+                }}
               >
                 В корзину
               </button>
             </div>
           </div>
         </div>
+        <Snackbar
+          open={snackbarOpen}
+          autoHideDuration={2000}
+          onClose={handleClose}
+          message={'Добавлено в корзину!'}
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        />
       </div>
     );
   }

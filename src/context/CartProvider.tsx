@@ -1,9 +1,6 @@
-import type {
-  ComplexProduct,
-  ComplexProductsType,
-} from '@/dataBase/complexProducts';
+import type { ComplexProduct, ComplexProductsType } from '@/dataBase/complexProducts';
 import { complexProducts } from '@/dataBase/complexProducts';
-import React, { createContext, Dispatch, useEffect, useState } from 'react';
+import React, { createContext, Dispatch, ReactElement, useEffect, useState } from 'react';
 import { baseBlocks } from '@/dataBase/baseBlocks';
 import { loadState } from './localStorage';
 
@@ -18,8 +15,8 @@ export interface CartProviderValue {
   getCartFromLocalStorage: () => void;
 }
 export const cartContext = createContext<CartProviderValue | null>(null);
-// надо бы убрать тип any
-export function CartProvider({ children }: any) {
+
+export function CartProvider({ children }: { children: ReactElement }) {
   const initialCart: ComplexProductsType = loadState();
   const [cart, setCart] = useState<ComplexProductsType>([]);
   const Provider = cartContext.Provider;
@@ -35,15 +32,13 @@ export function CartProvider({ children }: any) {
     let result: number = 0;
     for (let position in obj.composition) {
       result +=
-        baseBlocks.find((block) => block.name === position)!.price *
-        obj.composition[position];
+        baseBlocks.find((block) => block.name === position)!.price * obj.composition[position];
     }
     return result;
   }
 
   function addToCart(id: number, quantity: number): void {
     const productToAdd = complexProducts.find((product) => product.id === id)!!;
-
     setCart((prevCart) => {
       if (!prevCart?.some((cartItem) => cartItem.id === id)) {
         const newItem = {
@@ -57,9 +52,7 @@ export function CartProvider({ children }: any) {
         if (cartItem.id === id) {
           return {
             ...cartItem,
-            quantity: cartItem.quantity
-              ? cartItem.quantity + quantity
-              : quantity,
+            quantity: cartItem.quantity ? cartItem.quantity + quantity : quantity,
           };
         }
         return cartItem;
@@ -70,9 +63,7 @@ export function CartProvider({ children }: any) {
 
   function removeFromCart(id: number): void {
     const productToRemove = cart.find((product) => product.id === id)!!;
-    setCart((prevCart) =>
-      prevCart.filter((cartItem) => cartItem.id !== productToRemove.id)
-    );
+    setCart((prevCart) => prevCart.filter((cartItem) => cartItem.id !== productToRemove.id));
   }
 
   function increaseQuantity(id: number): void {
