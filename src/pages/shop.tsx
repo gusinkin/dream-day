@@ -10,6 +10,7 @@ import { CartProviderValue } from '@/context/CartProvider';
 import { cartContext } from '@/context/CartProvider';
 import Cart from './cart';
 import styles from '@/styles/Shop.module.scss';
+import { Accordion, AccordionDetails, AccordionSummary, TextField } from '@mui/material';
 
 // export default function Shop(defaultTags: string[] = []) {
 export interface ShopProps {
@@ -22,6 +23,14 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
   const [tagsHaveBeenClicked, setTagsHaveBeenClicked] = useState(false);
   const tagsRef = useRef<HTMLInputElement[]>([]);
   const searchInputRef = useRef<HTMLInputElement>(null);
+
+  function collectCheckedTags() {
+    return tagsRef.current.filter((tag) => tag.checked === true).map((tag) => tag.value);
+  }
+
+  function collectNotCheckedTags() {
+    return tagsRef.current.filter((tag) => tag.checked === false).map((tag) => tag.value);
+  }
 
   function handleTags() {
     setDynamicProducts(complexProducts);
@@ -44,11 +53,7 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
       });
     }
 
-    function collectTags() {
-      return tagsRef.current.filter((tag) => tag.checked === true).map((tag) => tag.value);
-    }
-
-    let tagsChecked = collectTags();
+    let tagsChecked = collectCheckedTags();
 
     if (tagsHaveBeenClicked && !tagsChecked.length) {
       router.push('/shop');
@@ -57,7 +62,7 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
     if (!tagsHaveBeenClicked) {
       setDefaultTagsChecked();
 
-      tagsChecked = collectTags();
+      tagsChecked = collectCheckedTags();
     }
 
     if (tagsChecked.length) {
@@ -98,10 +103,57 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
   return (
     <MainContainer keywords={'каталог'}>
       <div className={styles.page__container}>
-        <input ref={searchInputRef} type='text' onChange={handleSearch} placeholder='Найти товар' />
+        <TextField inputRef={searchInputRef} onChange={handleSearch} label='Поиск товара' />
+        {/* <input ref={searchInputRef} type='text' onChange={handleSearch} placeholder='Найти товар' /> */}
         <br />
         <br />
-        <div>
+        <Accordion
+          sx={{
+            backgroundColor: 'transparent',
+            // border: 'none',
+          }}
+        >
+          <AccordionSummary>
+            {'Тэги для поиска:'}
+            {/* <ul className='controls'>
+              {tags.map((item, index) => (
+                <li className='controls__item' key={item}>
+                  <label className='control__elem'>
+                    <input
+                      type='checkbox'
+                      name='tags'
+                      value={item}
+                      className='controls__checkbox'
+                      ref={(element: HTMLInputElement) => (tagsRef.current[index] = element)}
+                      onChange={handleTags}
+                    />
+                    <div className='tag controls__tag'>{item}</div>
+                  </label>
+                </li>
+              ))}
+            </ul> */}
+          </AccordionSummary>
+          <AccordionDetails>
+            <ul className='controls'>
+              {tags.map((item, index) => (
+                <li className='controls__item' key={item}>
+                  <label className='control__elem'>
+                    <input
+                      type='checkbox'
+                      name='tags'
+                      value={item}
+                      className='controls__checkbox'
+                      ref={(element: HTMLInputElement) => (tagsRef.current[index] = element)}
+                      onChange={handleTags}
+                    />
+                    <div className='tag controls__tag'>{item}</div>
+                  </label>
+                </li>
+              ))}
+            </ul>
+          </AccordionDetails>
+        </Accordion>
+        {/* <div>
           <ul className='controls'>
             {tags.map((item, index) => (
               <li className='controls__item' key={item}>
@@ -119,7 +171,7 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
               </li>
             ))}
           </ul>
-        </div>
+        </div> */}
         <br />
         <br />
 

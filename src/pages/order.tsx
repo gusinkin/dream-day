@@ -120,6 +120,8 @@ export default function Order() {
             <h2 className={styles.section__title}>Оформление заказа</h2>
             <form action='' className={styles.form} ref={form} onSubmit={sendEmail}>
               {/* <input type='hidden' name='to' value='some@mail.com' /> */}
+              <br />
+              <br />
               <TextField
                 required
                 label='Ваше имя'
@@ -178,6 +180,8 @@ export default function Order() {
                   value='Заказать'
                   className='button button--yellow'
                 />
+                <br />
+                <br />
                 <input type='reset' value='Очистить' className='button button--transparent' />
               </div>
             </form>

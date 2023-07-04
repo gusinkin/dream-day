@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { ComplexProductsType } from '@/dataBase/complexProducts';
 import styles from '@/styles/Cart.module.scss';
 import { saveState } from '@/context/localStorage';
+import { useRouter } from 'next/router';
 
 export default function Cart() {
   const {
@@ -22,6 +23,7 @@ export default function Cart() {
     getCartFromLocalStorage,
   } = useContext(cartContext) as CartProviderValue;
   const [amount, setAmount] = useState(0);
+  const router = useRouter();
 
   // не считается цена, она считается внутри продукта, а Cart ее не видит, выдает NaN
 
@@ -46,14 +48,10 @@ export default function Cart() {
                   <li key={cartItem.id} className={styles.cart__item}>
                     <Product id={cartItem.id} layout={'cartItem'} />
                     <div className={styles.cart__quantity}>
-                      <button onClick={() => decreaseQuantity(cartItem.id)}>
-                        -
-                      </button>
+                      <button onClick={() => decreaseQuantity(cartItem.id)}>-</button>
                       <b>{cartItem.quantity} шт</b>
-                      <button onClick={() => increaseQuantity(cartItem.id)}>
-                        +
-                      </button>
-                      <p>{cartItem.quantity! * cartItem.price!} Р</p>
+                      <button onClick={() => increaseQuantity(cartItem.id)}>+</button>
+                      <p>{`${cartItem.quantity! * cartItem.price!} \u20bd`}</p>
                       <button onClick={() => removeFromCart(cartItem.id)}>
                         удалить из корзины
                       </button>
@@ -61,14 +59,23 @@ export default function Cart() {
                   </li>
                 ))}
               </ul>
+              <br />
               <b>
-                <p>ИТОГО: {amount}</p>
+                <p>ИТОГО: {`${amount} \u20bd`}</p>
               </b>
-
-              <Link href='/order'> Перейти к оформлению</Link>
+              {/* <Link className={styles.button} href='/order'>
+                {' '}
+                Перейти к оформлению
+              </Link> */}
+              <br />
+              <button className={styles.button} onClick={() => router.push('/order')}>
+                Перейти к оформлению
+              </button>
               <br />
               <br />
-              <button onClick={() => clearCart()}>ОЧИСТИТЬ КОРЗИНУ</button>
+              <button className={styles.button} onClick={() => clearCart()}>
+                ОЧИСТИТЬ КОРЗИНУ
+              </button>
             </>
           )}
         </div>

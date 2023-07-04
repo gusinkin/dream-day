@@ -100,12 +100,13 @@ export const Product = ({ id, layout }: ProductProps) => {
                 </li>
               ))}
             </ul>
-            <div className={styles.item__price}>{product.price}</div>
+            <div className={styles.item__price}>{`${product.price} \u20bd`}</div>
 
             <div className={styles.item__buy}>
               {' '}
               <div className={styles.item__addtocart}>
                 <button
+                  className={styles.button}
                   onClick={() => {
                     addToCart(product.id, 1);
                     setSnackbarOpen(true);

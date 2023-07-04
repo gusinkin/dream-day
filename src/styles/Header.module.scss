@@ -99,12 +99,18 @@
   }
   &__link {
     text-transform: uppercase;
+    cursor: pointer;
     font-size: 16px;
     font-weight: 400;
     white-space: nowrap;
     color: $grayText;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    // transition: transform 150ms ease-in-out;
     &:hover {
       text-decoration: underline;
+      // transform: scale(1.05);
     }
   }
 }

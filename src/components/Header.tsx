@@ -39,35 +39,32 @@ export const Header = ({ hidden, colored }: HeaderProps) => {
         <nav className={styles.menu}>
           <ul className={styles.menu__list}>
             <li className={styles.menu__item}>
-              <button
-                className={styles.menu__link}
-                onClick={() => scrollToSection(0)}
-              >
-                главная
-              </button>
-            </li>
-            <li className={styles.menu__item}>
-              <button
-                className={styles.menu__link}
-                onClick={() => scrollToSection(1)}
-              >
-                секция
-              </button>
-            </li>
-            <li className={styles.menu__item}>
-              <Link className={styles.menu__link} href='/'>
+              <button className={styles.menu__link} onClick={() => scrollToSection(0)}>
                 Главная
-              </Link>
+              </button>
             </li>
             <li className={styles.menu__item}>
-              <Link className={styles.menu__link} href='/shop'>
+              <button className={styles.menu__link} onClick={() => scrollToSection(1)}>
+                Подобрать шарики
+              </button>
+            </li>
+            <li className={styles.menu__item}>
+              <button
+                className={styles.menu__link}
+                onClick={() => router.push('/shop')}
+                // href='/shop'
+              >
                 Магазин
-              </Link>
+              </button>
             </li>
             <li className={styles.menu__item}>
-              <Link className={styles.menu__link} href='/cart'>
+              <button
+                className={styles.menu__link}
+                onClick={() => router.push('/cart')}
+                // href='/cart'
+              >
                 Корзина
-              </Link>
+              </button>
             </li>
           </ul>
         </nav>{' '}
