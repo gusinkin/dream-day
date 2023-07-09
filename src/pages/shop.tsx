@@ -103,6 +103,11 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
     }
   }
 
+  const [expanded, setExpanded] = useState(false);
+  const handleAccordion = () => {
+    setExpanded(!expanded);
+  };
+
   return (
     <MainContainer keywords={'каталог'}>
       <div className={styles.page__container}>
@@ -111,32 +116,37 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
         <br />
         <br />
         <Accordion
+          expanded={expanded}
+          onChange={handleAccordion}
           sx={{
             backgroundColor: 'transparent',
             // border: 'none',
           }}
         >
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            {checkedTags.length ? (
-              <ul className='controls'>
-                {checkedTags.map((item, index) => (
-                  <li className='controls__item' key={item}>
-                    <label className='control__elem'>
-                      <input
-                        type='checkbox'
-                        name='tags'
-                        value={item}
-                        className='controls__checkbox'
-                        checked={false}
-                        ref={(element: HTMLInputElement) => (tagsRef.current[index] = element)}
-                        // onChange={handleTags}
-                        disabled
-                      />
-                      <div className='tag controls__tag'>{item}</div>
-                    </label>
-                  </li>
-                ))}
-              </ul>
+            {expanded ? null : checkedTags.length ? (
+              <>
+                {'Тэги для поиска: '}
+                <ul className='controls'>
+                  {checkedTags.map((item, index) => (
+                    <li className='controls__item' key={item}>
+                      <label className='control__elem'>
+                        <input
+                          type='checkbox'
+                          name='tags'
+                          value={item}
+                          className='controls__checkbox'
+                          checked={false}
+                          ref={(element: HTMLInputElement) => (tagsRef.current[index] = element)}
+                          // onChange={handleTags}
+                          disabled
+                        />
+                        <div className='tag controls__tag'>{item}</div>
+                      </label>
+                    </li>
+                  ))}
+                </ul>
+              </>
             ) : (
               'Тэги для поиска'
             )}
