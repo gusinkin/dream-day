@@ -11,6 +11,7 @@ import { cartContext } from '@/context/CartProvider';
 import Cart from './cart';
 import styles from '@/styles/Shop.module.scss';
 import { Accordion, AccordionDetails, AccordionSummary, TextField } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 // export default function Shop(defaultTags: string[] = []) {
 export interface ShopProps {
@@ -27,6 +28,8 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
   function collectCheckedTags() {
     return tagsRef.current.filter((tag) => tag.checked === true).map((tag) => tag.value);
   }
+
+  const checkedTags = collectCheckedTags();
 
   function collectNotCheckedTags() {
     return tagsRef.current.filter((tag) => tag.checked === false).map((tag) => tag.value);
@@ -113,43 +116,55 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
             // border: 'none',
           }}
         >
-          <AccordionSummary>
-            {'Тэги для поиска:'}
-            {/* <ul className='controls'>
-              {tags.map((item, index) => (
-                <li className='controls__item' key={item}>
-                  <label className='control__elem'>
-                    <input
-                      type='checkbox'
-                      name='tags'
-                      value={item}
-                      className='controls__checkbox'
-                      ref={(element: HTMLInputElement) => (tagsRef.current[index] = element)}
-                      onChange={handleTags}
-                    />
-                    <div className='tag controls__tag'>{item}</div>
-                  </label>
-                </li>
-              ))}
-            </ul> */}
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            {checkedTags.length ? (
+              <ul className='controls'>
+                {checkedTags.map((item, index) => (
+                  <li className='controls__item' key={item}>
+                    <label className='control__elem'>
+                      <input
+                        type='checkbox'
+                        name='tags'
+                        value={item}
+                        className='controls__checkbox'
+                        checked={false}
+                        ref={(element: HTMLInputElement) => (tagsRef.current[index] = element)}
+                        // onChange={handleTags}
+                        disabled
+                      />
+                      <div className='tag controls__tag'>{item}</div>
+                    </label>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              'Тэги для поиска'
+            )}
           </AccordionSummary>
           <AccordionDetails>
             <ul className='controls'>
-              {tags.map((item, index) => (
-                <li className='controls__item' key={item}>
-                  <label className='control__elem'>
-                    <input
-                      type='checkbox'
-                      name='tags'
-                      value={item}
-                      className='controls__checkbox'
-                      ref={(element: HTMLInputElement) => (tagsRef.current[index] = element)}
-                      onChange={handleTags}
-                    />
-                    <div className='tag controls__tag'>{item}</div>
-                  </label>
-                </li>
-              ))}
+              {tags
+                // .filter((tag, index) => tagsRef.current[index]?.checked === false)
+                .map((item, index) => {
+                  // console.log('', tagsRef.current[index]?.checked);
+                  // console.log('', tagsRef.current);
+
+                  return (
+                    <li className='controls__item' key={item}>
+                      <label className='control__elem'>
+                        <input
+                          type='checkbox'
+                          name='tags'
+                          value={item}
+                          className='controls__checkbox'
+                          ref={(element: HTMLInputElement) => (tagsRef.current[index] = element)}
+                          onChange={handleTags}
+                        />
+                        <div className='tag controls__tag'>{item}</div>
+                      </label>
+                    </li>
+                  );
+                })}
             </ul>
           </AccordionDetails>
         </Accordion>

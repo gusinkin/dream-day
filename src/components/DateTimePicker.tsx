@@ -32,7 +32,7 @@ export const CustomDateTimePicker = (props: CustomDateTimePickerProps) => {
   const minTime = isToday ? today.hour(today.hour() + 2) : dayjs(dateTime).hour(0).minute(0);
 
   const onSelectDateTime = (e: dayjs.Dayjs | null) => {
-    console.log(e);
+    // console.log(e);
     if (e) {
       setDateTime(e);
     }
@@ -47,8 +47,10 @@ export const CustomDateTimePicker = (props: CustomDateTimePickerProps) => {
       }
       case 'minutesStep': {
         // приделать debounce
-        setDateTimeError('Пожалуйста, укажите время, кратное 15 минутам');
-        onError('error');
+        // setDateTimeError('Пожалуйста, укажите время, кратное 15 минутам');
+        // onError('error');
+        // onError('');
+
         break;
       }
       case 'minTime': {
@@ -94,7 +96,7 @@ export const CustomDateTimePicker = (props: CustomDateTimePickerProps) => {
       onChange={onSelectDateTime}
       onError={onDateTimeError}
       views={['day', 'hours', 'minutes']}
-      minutesStep={15}
+      // minutesStep={10}
       sx={{
         marginBottom: '10px',
         width: '400px',
