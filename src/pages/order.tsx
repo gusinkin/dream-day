@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 
 import emailjs from '@emailjs/browser';
-import { Box, Modal, Snackbar, TextField, Typography } from '@mui/material';
+import { Box, Modal, TextField, Typography } from '@mui/material';
 
 import { cartContext, CartProviderValue } from '@/context/CartProvider';
 import { ComplexProduct } from '@/dataBase/complexProducts';
@@ -170,9 +170,9 @@ export default function Order() {
                   value='Заказать'
                   className='button button--yellow'
                 />
+                {/* <br />
                 <br />
-                <br />
-                <input type='reset' value='Очистить' className='button button--transparent' />
+                <input type='reset' value='Очистить' className='button button--transparent' /> */}
               </div>
             </form>
             <Modal open={modalOpen}>
