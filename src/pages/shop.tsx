@@ -1,14 +1,9 @@
-import Head from 'next/head';
-import Link from 'next/link';
-import { useState, useRef, useEffect, Dispatch } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { complexProducts } from '../dataBase/complexProducts';
 import { tags } from '../dataBase/tags';
 import { Product } from '@/components/Product';
 import { MainContainer } from '@/components/MainContainer';
 import { useRouter } from 'next/router';
-import { CartProviderValue } from '@/context/CartProvider';
-import { cartContext } from '@/context/CartProvider';
-import Cart from './cart';
 import styles from '@/styles/Shop.module.scss';
 import { Accordion, AccordionDetails, AccordionSummary, TextField } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -31,9 +26,9 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
 
   const checkedTags = collectCheckedTags();
 
-  function collectNotCheckedTags() {
-    return tagsRef.current.filter((tag) => tag.checked === false).map((tag) => tag.value);
-  }
+  // function collectNotCheckedTags() {
+  //   return tagsRef.current.filter((tag) => tag.checked === false).map((tag) => tag.value);
+  // }
 
   function handleTags() {
     setDynamicProducts(complexProducts);
@@ -124,7 +119,9 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
           }}
         >
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            {expanded ? null : checkedTags.length ? (
+            {expanded ? (
+              'Тэги для поиска:'
+            ) : checkedTags.length ? (
               <>
                 {'Тэги для поиска: '}
                 <ul className='controls'>

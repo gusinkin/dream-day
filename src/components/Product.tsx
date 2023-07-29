@@ -1,17 +1,11 @@
-import { Vujahday_Script } from '@next/font/google';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import React, { useContext, useState } from 'react';
-// import '../App.css';
-// import { useEffect } from 'react';
-// import { Link } from 'react-router-dom';
-import { BaseBlock, baseBlocks } from '../dataBase/baseBlocks';
+import React, { useContext } from 'react';
+import { baseBlocks } from '../dataBase/baseBlocks';
 import { ComplexProduct, complexProducts } from '../dataBase/complexProducts';
 import { cartContext } from '../context/CartProvider';
 import { CartProviderValue } from '../context/CartProvider';
 import styles from '@/styles/Product.module.scss';
 import cartStyles from '@/styles/Cart.module.scss';
-import { Snackbar } from '@mui/material';
 
 export interface ProductProps {
   id: number;
@@ -19,10 +13,7 @@ export interface ProductProps {
 }
 
 export const Product = ({ id, layout }: ProductProps) => {
-  const { addToCart } = useContext(cartContext) as CartProviderValue;
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-
-  // const { query } = useRouter();
+  const { addToCart, openSnackbar } = useContext(cartContext) as CartProviderValue;
 
   function getPrice(obj: ComplexProduct) {
     if (typeof obj.composition === 'number') return obj.composition;
@@ -34,47 +25,15 @@ export const Product = ({ id, layout }: ProductProps) => {
     return result;
   }
 
-  // function getQuantity(id: number) {
-  //   const product = cart.find((item) => item.id === id);
-  //   return product?.quantity;
-  // }
-
   function createProduct(id: number) {
     let result = complexProducts.find((item) => item.id === id)!;
     const price = getPrice(result);
     result = { ...result, price };
-    // if (layout === 'cartItem') {
-    //   result = { ...result, quantity: getQuantity(id) };
-    // }
+
     return result;
   }
 
-  const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-    setSnackbarOpen(false);
-  };
-
   const product = createProduct(id);
-
-  // Можно ли вот от этого избавиться? по сути лишний код, функция которая только запускает другую
-  // выдает ошибку если напрямую контекстную функцию (addToCart и тд) вызвать через onClick
-
-  // function addProductToCart() {
-  //   addToCart(product.id, 1);
-  // }
-
-  // function removeProductFromCart() {
-  //   removeFromCart(product.id);
-  // }
-
-  // function increase() {
-  //   increaseQuantity(product.id);
-  // }
-  // function decrease() {
-  //   decreaseQuantity(product.id);
-  // }
 
   if (layout === 'productPage') {
     return (
@@ -109,7 +68,7 @@ export const Product = ({ id, layout }: ProductProps) => {
                   className={styles.button}
                   onClick={() => {
                     addToCart(product.id, 1);
-                    setSnackbarOpen(true);
+                    openSnackbar();
                   }}
                 >
                   В корзину
@@ -117,14 +76,6 @@ export const Product = ({ id, layout }: ProductProps) => {
               </div>
             </div>
           </div>
-
-          <Snackbar
-            open={snackbarOpen}
-            autoHideDuration={2000}
-            onClose={handleClose}
-            message={'Добавлено в корзину!'}
-            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-          />
         </div>
       </div>
     );
@@ -161,32 +112,26 @@ export const Product = ({ id, layout }: ProductProps) => {
                   </li>
                 ))}
               </ul> */}
-              <div className={styles.item__price}>{product.price}</div>
+              <div className={styles.item__price}>{`${product.price} \u20bd`}</div>
+            </div>{' '}
+            <div className={styles.item__buy}>
+              {' '}
+              {/* <div className={styles.item}__price'>{product.price}</div> */}
+              <div className={styles.item__addtocart}>
+                <button
+                  className={styles.button}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    addToCart(product.id, 1);
+                    openSnackbar();
+                  }}
+                >
+                  В корзину
+                </button>
+              </div>
             </div>
           </Link>
-          <div className={styles.item__buy}>
-            {' '}
-            {/* <div className={styles.item}__price'>{product.price}</div> */}
-            <div className={styles.item__addtocart}>
-              <button
-                className={styles.button}
-                onClick={() => {
-                  addToCart(product.id, 1);
-                  setSnackbarOpen(true);
-                }}
-              >
-                В корзину
-              </button>
-            </div>
-          </div>
         </div>
-        <Snackbar
-          open={snackbarOpen}
-          autoHideDuration={2000}
-          onClose={handleClose}
-          message={'Добавлено в корзину!'}
-          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-        />
       </div>
     );
   }

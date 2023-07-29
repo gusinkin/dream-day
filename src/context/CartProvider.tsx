@@ -3,6 +3,7 @@ import { complexProducts } from '@/dataBase/complexProducts';
 import React, { createContext, Dispatch, ReactElement, useEffect, useState } from 'react';
 import { baseBlocks } from '@/dataBase/baseBlocks';
 import { loadState } from './localStorage';
+import { Snackbar } from '@mui/material';
 
 export interface CartProviderValue {
   cart: ComplexProductsType;
@@ -12,13 +13,14 @@ export interface CartProviderValue {
   decreaseQuantity: (id: number) => void;
   countTotal: (cart: ComplexProductsType) => number;
   clearCart: () => void;
-  getCartFromLocalStorage: () => void;
+  openSnackbar: () => void;
 }
 export const cartContext = createContext<CartProviderValue | null>(null);
 
 export function CartProvider({ children }: { children: ReactElement }) {
   const initialCart: ComplexProductsType = loadState();
   const [cart, setCart] = useState<ComplexProductsType>([]);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
   const Provider = cartContext.Provider;
 
   useEffect(() => {
@@ -90,16 +92,16 @@ export function CartProvider({ children }: { children: ReactElement }) {
     setCart([]);
   }
 
-  function getCartFromLocalStorage() {
-    console.log('getCartFromLocalStorage in context');
-    const state = loadState();
-    console.log('state', state);
-    setCart(state);
+  function openSnackbar() {
+    setSnackbarOpen(true);
   }
-  // useEffect(() => {
-  //   console.log('getCartFromLocalStorage');
-  //   getCartFromLocalStorage();
-  // }, []);
+
+  const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setSnackbarOpen(false);
+  };
 
   return (
     <Provider
@@ -111,10 +113,17 @@ export function CartProvider({ children }: { children: ReactElement }) {
         decreaseQuantity,
         countTotal,
         clearCart,
-        getCartFromLocalStorage,
+        openSnackbar,
       }}
     >
       {children}
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={2000}
+        onClose={handleClose}
+        message={'Добавлено в корзину!'}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      />
     </Provider>
   );
 }

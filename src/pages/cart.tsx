@@ -20,7 +20,6 @@ export default function Cart() {
     decreaseQuantity,
     countTotal,
     clearCart,
-    getCartFromLocalStorage,
   } = useContext(cartContext) as CartProviderValue;
   const [amount, setAmount] = useState(0);
   const router = useRouter();
