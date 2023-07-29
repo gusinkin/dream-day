@@ -18,7 +18,6 @@ export default function Order() {
   const [dateTimeValid, setDateTimeValid] = useState(true);
   const [disabled, setDisabled] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
 
   const handlePhoneError = (err: string) => {
     if (err.length) {
@@ -48,7 +47,9 @@ export default function Order() {
     }
   }, [name, phoneValid, dateTimeValid]);
 
-  const { cart, countTotal, clearCart } = useContext(cartContext) as CartProviderValue;
+  const { cart, countTotal, clearCart, openSnackbar } = useContext(
+    cartContext
+  ) as CartProviderValue;
   const amount = countTotal(cart);
 
   const beautifyCart = (cart: ComplexProduct[]) => {
@@ -77,27 +78,16 @@ export default function Order() {
     };
 
     emailjs.send('service_njfh7ml', 'template_3wn7izp', template, 'dMZ5_POBysMOTiTGb').then(
-      (result) => {
-        console.log('ФОРМА ОТПРАВЛЕНА');
-
+      () => {
         clearCart();
         setModalOpen(true);
       },
       (error) => {
         console.log('ПРОИЗОШЛА ОШИБКА', error);
-        setSnackbarOpen(true);
-
-        // show the user an error
+        openSnackbar('Произошла ошибка, попробуйте снова');
       }
     );
     console.log('template', template);
-  };
-
-  const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-    setSnackbarOpen(false);
   };
 
   const style = {
@@ -185,13 +175,6 @@ export default function Order() {
                 <input type='reset' value='Очистить' className='button button--transparent' />
               </div>
             </form>
-            <Snackbar
-              open={snackbarOpen}
-              autoHideDuration={2000}
-              onClose={handleClose}
-              message={'Произошла ошибка, попробуйте снова'}
-              anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-            />
             <Modal open={modalOpen}>
               <Box sx={style}>
                 <Typography id='modal-modal-title' variant='h6' component='h2'>

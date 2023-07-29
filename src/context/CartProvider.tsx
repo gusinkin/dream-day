@@ -13,7 +13,7 @@ export interface CartProviderValue {
   decreaseQuantity: (id: number) => void;
   countTotal: (cart: ComplexProductsType) => number;
   clearCart: () => void;
-  openSnackbar: () => void;
+  openSnackbar: (text: string) => void;
 }
 export const cartContext = createContext<CartProviderValue | null>(null);
 
@@ -21,6 +21,7 @@ export function CartProvider({ children }: { children: ReactElement }) {
   const initialCart: ComplexProductsType = loadState();
   const [cart, setCart] = useState<ComplexProductsType>([]);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarText, setSnackbarText] = useState('');
   const Provider = cartContext.Provider;
 
   useEffect(() => {
@@ -92,8 +93,9 @@ export function CartProvider({ children }: { children: ReactElement }) {
     setCart([]);
   }
 
-  function openSnackbar() {
+  function openSnackbar(text: string) {
     setSnackbarOpen(true);
+    setSnackbarText(text);
   }
 
   const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
@@ -101,6 +103,7 @@ export function CartProvider({ children }: { children: ReactElement }) {
       return;
     }
     setSnackbarOpen(false);
+    setSnackbarText('');
   };
 
   return (
@@ -121,7 +124,7 @@ export function CartProvider({ children }: { children: ReactElement }) {
         open={snackbarOpen}
         autoHideDuration={2000}
         onClose={handleClose}
-        message={'Добавлено в корзину!'}
+        message={snackbarText}
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       />
     </Provider>

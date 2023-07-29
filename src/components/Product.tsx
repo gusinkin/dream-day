@@ -6,6 +6,7 @@ import { cartContext } from '../context/CartProvider';
 import { CartProviderValue } from '../context/CartProvider';
 import styles from '@/styles/Product.module.scss';
 import cartStyles from '@/styles/Cart.module.scss';
+import { Box } from '@mui/material';
 
 export interface ProductProps {
   id: number;
@@ -68,7 +69,7 @@ export const Product = ({ id, layout }: ProductProps) => {
                   className={styles.button}
                   onClick={() => {
                     addToCart(product.id, 1);
-                    openSnackbar();
+                    openSnackbar('Добавлено в корзину!');
                   }}
                 >
                   В корзину
@@ -82,56 +83,54 @@ export const Product = ({ id, layout }: ProductProps) => {
   }
   if (layout === 'productCard') {
     return (
-      <div className={styles.productCard}>
-        <div className={styles.item}>
-          <Link href={`/shop/item/${product.id}`}>
-            <div className={styles.item__image}>
-              <div className={styles.item__pic}>
-                {
-                  // query === {} ? (
-                  //   <img src={`images/complexProducts/${product.id}.jpg`} alt={product.name} />
-                  // ) : (
-                  <img
-                    className={styles.item__img}
-                    src={`../../images/complexProducts/${product.id}.jpg`}
-                    alt={product.name}
-                  />
-                  // )
-                }
-              </div>
+      <div className={styles.item}>
+        <Link href={`/shop/item/${product.id}`}>
+          <div className={styles.item__image}>
+            <div className={styles.item__pic}>
+              {
+                // query === {} ? (
+                //   <img src={`images/complexProducts/${product.id}.jpg`} alt={product.name} />
+                // ) : (
+                <img
+                  className={styles.item__img}
+                  src={`../../images/complexProducts/${product.id}.jpg`}
+                  alt={product.name}
+                />
+                // )
+              }
             </div>
-            <div className={styles.item__info}>
-              <div className={styles.item__name}>{product.name}</div>
-              {/* <div className={styles.item__description}>
+          </div>
+          <div className={styles.item__info}>
+            <div className={styles.item__name}>{product.name}</div>
+            {/* <div className={styles.item__description}>
                 {product.description}
               </div> */}
-              {/* <ul className='reviews__tags'>
+            {/* <ul className='reviews__tags'>
                 {product.tags.map((tag) => (
                   <li className='reviews__tags-item tag tag--green' key={tag}>
                     {tag}
                   </li>
                 ))}
               </ul> */}
-              <div className={styles.item__price}>{`${product.price} \u20bd`}</div>
-            </div>{' '}
-            <div className={styles.item__buy}>
-              {' '}
-              {/* <div className={styles.item}__price'>{product.price}</div> */}
-              <div className={styles.item__addtocart}>
-                <button
-                  className={styles.button}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    addToCart(product.id, 1);
-                    openSnackbar();
-                  }}
-                >
-                  В корзину
-                </button>
-              </div>
+            <div className={styles.item__price}>{`${product.price} \u20bd`}</div>
+          </div>{' '}
+          <div className={styles.item__buy}>
+            {' '}
+            {/* <div className={styles.item}__price'>{product.price}</div> */}
+            <div className={styles.item__addtocart}>
+              <button
+                className={styles.button}
+                onClick={(e) => {
+                  e.preventDefault();
+                  addToCart(product.id, 1);
+                  openSnackbar('Добавлено в корзину!');
+                }}
+              >
+                В корзину
+              </button>
             </div>
-          </Link>
-        </div>
+          </div>
+        </Link>
       </div>
     );
   }
