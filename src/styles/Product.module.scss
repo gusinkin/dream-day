@@ -1,25 +1,33 @@
 @import './base.scss';
 
-.item {
+.productCard {
+  // border: 1px solid black;
   width: 250px;
   // height: 500px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
-  /* justify-content: space-between; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  @include tablets {
+    width: 200px;
+  }
+  @include phones {
+    width: 160px;
+  }
+
+  &__link {
+    width: 100%;
+    height: 100%;
+    transition: transform 120ms ease-in-out;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
   &__image {
     // эти размеры для корзины нужны другие, надо отвязать
-    width: 200px;
-    height: 200px;
-    //
-    margin-bottom: 10px;
-    // &_big {
-    //   width: 500px;
-    //   height: 500px;
-    //   margin-bottom: 10px;
-    // }
+    width: 100%;
+    margin-bottom: 15px;
   }
   &__pic {
     width: 100%;
@@ -35,16 +43,31 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    flex: 1;
+    margin-bottom: 7px;
     /* word-break: break-all; */
     /* нормально сделать перенос */
   }
   &__name {
-    font-weight: 700;
+    font-weight: 300;
     text-transform: uppercase;
+  }
+  &__buy {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 7px;
+    @include tablets {
+    }
+    @include phones {
+      flex-direction: column;
+    }
   }
   &__price {
     font-size: 20px;
+    @include phones {
+      margin-bottom: 7px;
+    }
   }
 }
 
