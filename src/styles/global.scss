@@ -13,7 +13,8 @@ html {
     font-size: $baseFontSize - 1px;
   }
   @include phones {
-    font-size: 3.3vmin;
+    // font-size: 3.3vmin;
+    font-size: $baseFontSize - 2px;
   }
 }
 body,
@@ -98,7 +99,8 @@ ul {
   border: 1px solid transparent;
 }
 .controls__checkbox:checked ~ .controls__tag {
-  background: #feaeff;
+  // background: #feaeff;
+  background: #ffccfc;
 }
 .controls__checkbox:focus ~ .controls__tag {
   /* background: #b9eae4; */
@@ -106,7 +108,7 @@ ul {
 }
 
 .tag {
-  font-size: 13px;
+  font-size: 16px;
   color: #303030;
   padding: 8px 20px;
   border-radius: 50px;

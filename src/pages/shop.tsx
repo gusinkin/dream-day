@@ -123,7 +123,9 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
               'Тэги для поиска:'
             ) : checkedTags.length ? (
               <>
-                {'Тэги для поиска: '}
+                {/* <div style={{ padding: '4px 10px', display: 'flex', alignItems: 'center' }}> */}
+                <p>Тэги для поиска:</p>
+                {/* </div>{' '} */}
                 <ul className='controls'>
                   {checkedTags.map((item, index) => (
                     <li className='controls__item' key={item}>
@@ -133,7 +135,7 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
                           name='tags'
                           value={item}
                           className='controls__checkbox'
-                          checked={false}
+                          checked={true}
                           ref={(element: HTMLInputElement) => (tagsRef.current[index] = element)}
                           // onChange={handleTags}
                           disabled
@@ -199,7 +201,7 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
 
         <ul className={styles.catalog}>
           {dynamicProducts.map((dynamicProduct) => (
-            <li key={dynamicProduct.id}>
+            <li key={dynamicProduct.id} className={styles.catalog__item}>
               <Product id={dynamicProduct.id} layout={'productCard'} />
             </li>
           ))}

@@ -38,33 +38,33 @@ export const Product = ({ id, layout }: ProductProps) => {
 
   if (layout === 'productPage') {
     return (
-      <div className={styles.section__container}>
+      <div className={styles.page__container}>
         <div className={styles.productPage}>
           <div className={styles.productPage__image}>
-            <div className={styles.productCard__pic}>
+            <div className={styles.productPage__pic}>
               <img
-                className={styles.productCard__img}
+                className={styles.productPage__img}
                 src={`../../images/complexProducts/${product.id}.jpg`}
                 alt={product.name}
               />
             </div>
           </div>
           <div className={styles.productPage__info}>
-            <div className={styles.productCard__name}>{product.name}</div>
-            <div className={styles.productCard__description}>{product.description}</div>
-            <p>Теги для поиска:</p>
-            <ul className={styles.productPage__tags}>
-              {product.tags.map((tag) => (
-                <li className={styles.tag} key={tag}>
-                  {tag}
-                </li>
-              ))}
-            </ul>
-            <div className={styles.productCard__price}>{`${product.price} \u20bd`}</div>
-
-            <div className={styles.productCard__buy}>
-              {' '}
-              <div className={styles.productCard__addtocart}>
+            <div className={styles.productPage__info_container}>
+              <div className={styles.productPage__name}>{product.name}</div>
+              <div className={styles.productPage__description}>{product.description}</div>
+              <div className={styles.productPage__tags}>
+                <p>Теги для поиска:</p>
+                <ul className={styles.productPage__tags_container}>
+                  {product.tags.map((tag) => (
+                    <li className={styles.tag} key={tag}>
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className={styles.productPage__price}>{`${product.price} \u20bd`}</div>{' '}
+              <div className={styles.productPage__addtocart}>
                 <button
                   className={styles.button}
                   onClick={() => {
@@ -74,7 +74,7 @@ export const Product = ({ id, layout }: ProductProps) => {
                 >
                   В корзину
                 </button>
-              </div>
+              </div>{' '}
             </div>
           </div>
         </div>
