@@ -32,7 +32,7 @@ export const MainContainer = ({
     setScrollStatus((prev) => {
       return {
         position: window.scrollY,
-        up: window.scrollY < prev.position ? true : false,
+        up: window.scrollY <= prev.position,
       };
     });
   };
