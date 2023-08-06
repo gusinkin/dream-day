@@ -38,7 +38,7 @@ export const Product = ({ id, layout }: ProductProps) => {
 
   if (layout === 'productPage') {
     return (
-      <div className={styles.page__container}>
+      <div className={styles.shortpage__container}>
         <div className={styles.productPage}>
           <div className={styles.productPage__image}>
             <div className={styles.productPage__pic}>

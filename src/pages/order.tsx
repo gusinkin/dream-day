@@ -103,96 +103,94 @@ export default function Order() {
   };
 
   return (
-    <>
-      <MainContainer keywords={'оформление заказа'}>
-        <section className={styles.order}>
-          <div className={styles.section__container}>
-            <h2 className={styles.section__title}>Оформление заказа</h2>
-            <form action='' className={styles.form} ref={form} onSubmit={sendEmail}>
-              {/* <input type='hidden' name='to' value='some@mail.com' /> */}
-              <br />
-              <br />
-              <TextField
-                required
-                label='Ваше имя'
-                type='text'
-                id='name'
-                name='name'
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                sx={{
-                  marginBottom: '10px',
-                  width: '400px',
-                  alignSelf: 'center',
-                }}
-              />
-              <CustomPhonePicker onError={handlePhoneError} />
-              <TextField
-                label='Адрес доставки'
-                type='text'
-                id='address'
-                name='address'
-                sx={{
-                  marginBottom: '10px',
-                  width: '400px',
-                  alignSelf: 'center',
-                }}
-              />
-              <CustomDateTimePicker onError={handleDateTimeError} />
-              <TextField
-                label='E-mail'
-                type='email'
-                id='email'
-                name='email'
-                sx={{
-                  marginBottom: '10px',
-                  width: '400px',
-                  alignSelf: 'center',
-                }}
-              />
-              <TextField
-                label='Комментарий к заказу'
-                multiline
-                type='text'
-                id='comment'
-                name='comment'
-                sx={{
-                  marginBottom: '10px',
-                  width: '400px',
-                  alignSelf: 'center',
-                }}
-              />
+    <MainContainer keywords={'оформление заказа'}>
+      <>
+        <div className={styles.shortpage__container}>
+          <h2 className={styles.section__title}>Оформление заказа</h2>
+          <form action='' className={styles.form} ref={form} onSubmit={sendEmail}>
+            {/* <input type='hidden' name='to' value='some@mail.com' /> */}
+            <br />
+            <br />
+            <TextField
+              required
+              label='Ваше имя'
+              type='text'
+              id='name'
+              name='name'
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              sx={{
+                marginBottom: '10px',
+                width: '400px',
+                alignSelf: 'center',
+              }}
+            />
+            <CustomPhonePicker onError={handlePhoneError} />
+            <TextField
+              label='Адрес доставки'
+              type='text'
+              id='address'
+              name='address'
+              sx={{
+                marginBottom: '10px',
+                width: '400px',
+                alignSelf: 'center',
+              }}
+            />
+            <CustomDateTimePicker onError={handleDateTimeError} />
+            <TextField
+              label='E-mail'
+              type='email'
+              id='email'
+              name='email'
+              sx={{
+                marginBottom: '10px',
+                width: '400px',
+                alignSelf: 'center',
+              }}
+            />
+            <TextField
+              label='Комментарий к заказу'
+              multiline
+              type='text'
+              id='comment'
+              name='comment'
+              sx={{
+                marginBottom: '10px',
+                width: '400px',
+                alignSelf: 'center',
+              }}
+            />
 
-              <div className='form__buttons'>
-                <input
-                  type='submit'
-                  disabled={disabled}
-                  value='Заказать'
-                  className='button button--yellow'
-                />
-                {/* <br />
+            <div className='form__buttons'>
+              <input
+                type='submit'
+                disabled={disabled}
+                value='Заказать'
+                className='button button--yellow'
+              />
+              {/* <br />
                 <br />
                 <input type='reset' value='Очистить' className='button button--transparent' /> */}
-              </div>
-            </form>
-            <Modal open={modalOpen}>
-              <Box sx={style}>
-                <Typography id='modal-modal-title' variant='h6' component='h2'>
-                  Заказ принят! Мы скоро свяжемся с Вами для подтверждения
-                </Typography>
-                <button
-                  className={styles.button}
-                  onClick={() => {
-                    router.push('/');
-                  }}
-                >
-                  Вернуться на главную
-                </button>
-              </Box>
-            </Modal>
-          </div>
-        </section>
-      </MainContainer>
-    </>
+            </div>
+          </form>
+          <Modal open={modalOpen}>
+            <Box sx={style}>
+              <Typography id='modal-modal-title' variant='h6' component='h2'>
+                Заказ принят! Мы скоро свяжемся с Вами для подтверждения
+              </Typography>
+              <button
+                className={styles.button}
+                onClick={() => {
+                  router.push('/');
+                }}
+              >
+                Вернуться на главную
+              </button>
+            </Box>
+          </Modal>
+        </div>
+      </>
+    </MainContainer>
   );
 }

@@ -105,7 +105,7 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
 
   return (
     <MainContainer keywords={'каталог'}>
-      <div className={styles.page__container}>
+      <div className={styles.longpage__container}>
         <TextField inputRef={searchInputRef} onChange={handleSearch} label='Поиск товара' />
         {/* <input ref={searchInputRef} type='text' onChange={handleSearch} placeholder='Найти товар' /> */}
         <br />

@@ -35,7 +35,7 @@ export default function Cart() {
 
   return (
     <MainContainer keywords='корзина'>
-      <div className={styles.cart__container}>
+      <div className={styles.longpage__container}>
         <h2 className={styles.section__title}>Корзина</h2>
         <div>
           {!cart.length ? (

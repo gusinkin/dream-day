@@ -63,16 +63,31 @@ $phones: 520px;
   }
 }
 
-.page__container {
+.longpage__container {
   width: $containerWidth;
   max-width: $maxWidth;
   height: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  // justify-content: center;
   padding: 12.5vh 0;
   text-align: center;
+}
+
+.shortpage__container {
+  width: $containerWidth;
+  max-width: $maxWidth;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 12.5vh 0;
+  text-align: center;
+  @include tablets {
+    height: 100%;
+  }
+  @include phones {
+  }
 }
 
 .button {
