@@ -2,21 +2,42 @@
 
 .filteredRoutesSection {
   height: 100vh;
-  // min-height: 650px;
-  // background-color: rgb(83, 114, 158);
-  // background-image: url(../../public/images/bg/hero-transparent.png);
-  background-size: cover;
-
+  &__listwrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   &__list {
-    // flex: 1;
+    margin-bottom: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 2.5vw;
-    // gap: 1fr;
+    @include tablets {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+    }
+    @include phones {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
   }
   &__item {
-    // aspect-ratio: 1 / 1.25;
     aspect-ratio: 1 / 1;
+    &:last-child {
+      display: none;
+    }
+    @include tablets {
+      max-height: min(30vw, 25vh);
+      &:last-child {
+        display: list-item;
+      }
+    }
+    @include phones {
+      max-height: 20vh;
+      &:last-child {
+        display: none;
+      }
+    }
   }
 }
