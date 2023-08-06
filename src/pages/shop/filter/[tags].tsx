@@ -1,21 +1,13 @@
 import { useRouter } from 'next/router';
-import {
-  Product,
-  // ProductProps
-} from '@/components/Product';
-import { BaseBlock, baseBlocks } from '../../../dataBase/baseBlocks';
-import {
-  ComplexProduct,
-  complexProducts,
-} from '../../../dataBase/complexProducts';
-import { MainContainer } from '@/components/MainContainer';
 import Shop from '@/pages/shop';
 import { GetStaticProps, GetStaticPaths } from 'next';
-// import { filteredRoutes } from '@/routes/filteredRoutes';
 import { filteredRoutes } from '@/dataBase/filteredRoutes';
+import { tagObjects } from '@/dataBase/tags';
 
 export const getStaticPaths: GetStaticPaths = () => {
-  const paths = filteredRoutes.map((route) => route.link);
+  const paths = filteredRoutes
+    .map((route) => route.link)
+    .concat(tagObjects.map((obj) => `/shop/filter/${obj.route}`));
 
   return { paths: paths, fallback: false };
 };

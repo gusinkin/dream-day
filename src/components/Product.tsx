@@ -6,7 +6,7 @@ import { cartContext } from '../context/CartProvider';
 import { CartProviderValue } from '../context/CartProvider';
 import styles from '@/styles/Product.module.scss';
 import cartStyles from '@/styles/Cart.module.scss';
-import { Box } from '@mui/material';
+import { TagRoute } from './TagRoute';
 
 export interface ProductProps {
   id: number;
@@ -57,9 +57,7 @@ export const Product = ({ id, layout }: ProductProps) => {
                 <p>Теги для поиска:</p>
                 <ul className={styles.productPage__tags_container}>
                   {product.tags.map((tag) => (
-                    <li className={styles.tag} key={tag}>
-                      {tag}
-                    </li>
+                    <TagRoute tagName={tag} key={tag} />
                   ))}
                 </ul>
               </div>
