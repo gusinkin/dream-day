@@ -96,7 +96,6 @@
     width: 100%;
     @include tablets {
       margin-bottom: 20px;
-      // flex: 1;
     }
   }
   &__pic {
@@ -141,6 +140,6 @@
     margin-bottom: 10px;
     font-size: 20px;
   }
-  &__addtocart {
-  }
+  // &__addtocart {
+  // }
 }
