@@ -108,9 +108,6 @@ export default function Order() {
         <div className={styles.shortpage__container}>
           <h2 className={styles.section__title}>Оформление заказа</h2>
           <form action='' className={styles.form} ref={form} onSubmit={sendEmail}>
-            {/* <input type='hidden' name='to' value='some@mail.com' /> */}
-            <br />
-            <br />
             <TextField
               required
               label='Ваше имя'
@@ -121,8 +118,7 @@ export default function Order() {
               onChange={(e) => setName(e.target.value)}
               sx={{
                 marginBottom: '10px',
-                width: '400px',
-                alignSelf: 'center',
+                width: '100%',
               }}
             />
             <CustomPhonePicker onError={handlePhoneError} />
@@ -133,8 +129,7 @@ export default function Order() {
               name='address'
               sx={{
                 marginBottom: '10px',
-                width: '400px',
-                alignSelf: 'center',
+                width: '100%',
               }}
             />
             <CustomDateTimePicker onError={handleDateTimeError} />
@@ -145,8 +140,7 @@ export default function Order() {
               name='email'
               sx={{
                 marginBottom: '10px',
-                width: '400px',
-                alignSelf: 'center',
+                width: '100%',
               }}
             />
             <TextField
@@ -156,9 +150,8 @@ export default function Order() {
               id='comment'
               name='comment'
               sx={{
-                marginBottom: '10px',
-                width: '400px',
-                alignSelf: 'center',
+                marginBottom: '25px',
+                width: '100%',
               }}
             />
 

@@ -99,8 +99,7 @@ export const CustomDateTimePicker = (props: CustomDateTimePickerProps) => {
       // minutesStep={10}
       sx={{
         marginBottom: '10px',
-        width: '400px',
-        alignSelf: 'center',
+        width: '100%',
       }}
       slotProps={{
         textField: {

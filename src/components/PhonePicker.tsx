@@ -58,8 +58,7 @@ export const CustomPhonePicker = (props: CustomPhonePickerProps) => {
           helperText={error}
           sx={{
             marginBottom: '10px',
-            width: '400px',
-            alignSelf: 'center',
+            width: '100%',
           }}
           inputRef={textMaskRef}
         />

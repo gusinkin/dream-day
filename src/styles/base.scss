@@ -83,6 +83,7 @@ $phones: 520px;
   flex-direction: column;
   padding: 12.5vh 0;
   text-align: center;
+  align-items: center;
   @include tablets {
     height: 100%;
   }
