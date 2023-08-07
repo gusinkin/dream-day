@@ -1,5 +1,4 @@
 import styles from '@/styles/SomeSection.module.scss';
-import Link from 'next/link';
 
 export const SomeSection = () => {
   return (

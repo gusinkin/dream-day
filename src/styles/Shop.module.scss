@@ -2,15 +2,15 @@
 
 .catalog {
   display: grid;
-  column-gap: 3vw;
-  row-gap: 5vw;
+  column-gap: min(3vw, 50px);
+  row-gap: min(5vw, 50px);
   grid-template-rows: repeat(auto-fill, minmax(70px, 1fr));
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   @include tablets {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
   @include phones {
-    column-gap: 1vw;
+    column-gap: 2vw;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   }
   &__item {
