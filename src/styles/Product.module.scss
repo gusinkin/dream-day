@@ -22,6 +22,9 @@
     transition: transform 120ms ease-in-out;
     &:hover {
       transform: scale(1.05);
+      .productCard__info {
+        text-decoration: underline;
+      }
     }
   }
   &__image {

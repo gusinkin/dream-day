@@ -29,16 +29,21 @@
   &__content {
     // width: 25%;
     // left: 70%;
-    width: 33%;
-    left: 65%;
+    width: 34%;
+    left: 64%;
 
     top: 20%;
     position: relative;
     text-align: center;
+    @include tablets {
+      width: 44%;
+      left: 54%;
+    }
   }
   &__title {
     // font-size: 48px;
-    font-size: 64px;
+    // font-size: 64px;
+    font-size: min(5vw, 100px);
 
     font-weight: 800;
     white-space: nowrap;
@@ -58,11 +63,15 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    @include tablets {
+      font-size: 6.6vw;
+    }
   }
   &__subtitle {
     color: $grayText;
     // font-size: 11px;
-    font-size: 16px;
+    // font-size: 16px;
+    font-size: min(1.15vw, 23px);
 
     font-weight: 400;
     white-space: nowrap;
@@ -74,14 +83,24 @@
     // @include phones {
     //   line-height: 1;
     // }
+    @include tablets {
+      // font-size: 1.52vw;
+      font-size: calc(0.8vw + 5px);
+    }
   }
   &__text {
     color: $grayText;
     // font-size: 9px;
-    font-size: 13px;
+    // font-size: 13px;
+    font-size: min(0.95vw, 19px);
 
     font-weight: 400;
     margin: 0.83rem 0;
+    @include tablets {
+      // font-size: 1.26vw;
+      font-size: calc(0.65vw + 5px);
+      padding: 0 3vw;
+    }
   }
 }
 

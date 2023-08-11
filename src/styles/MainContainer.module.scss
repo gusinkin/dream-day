@@ -35,9 +35,12 @@
     height: 100vh;
     background-image: url(../../public/images/bg/hero-transparent.png);
     background-size: cover;
-    background-position: center top;
+    background-position: center center;
     z-index: 5;
     transition: opacity 1000ms;
+    @include tablets {
+      background-position: 70% center;
+    }
   }
 }
 .dark::after {
