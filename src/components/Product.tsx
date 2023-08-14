@@ -61,7 +61,7 @@ export const Product = ({ id, layout }: ProductProps) => {
                   ))}
                 </ul>
               </div>
-              <div className={styles.productPage__price}>{`${product.price} \u20bd`}</div>{' '}
+              <div className={styles.productPage__price}>{`${product.price}\u00A0\u20bd`}</div>{' '}
               <div className={styles.productPage__addtocart}>
                 <button
                   className={styles.button}
@@ -94,21 +94,9 @@ export const Product = ({ id, layout }: ProductProps) => {
           </div>
           <div className={styles.productCard__info}>
             <div className={styles.productCard__name}>{product.name}</div>
-            {/* <div className={styles.productCard__description}>
-                {product.description}
-              </div> */}
-            {/* <ul className='reviews__tags'>
-                {product.tags.map((tag) => (
-                  <li className='reviews__tags-item tag tag--green' key={tag}>
-                    {tag}
-                  </li>
-                ))}
-              </ul> */}
-          </div>{' '}
+          </div>
           <div className={styles.productCard__buy}>
-            {' '}
-            {/* <div className={styles.productCard}__price'>{product.price}</div> */}
-            <div className={styles.productCard__price}>{`${product.price} \u20bd`}</div>
+            <div className={styles.productCard__price}>{`${product.price}\u00A0\u20bd`}</div>
             <div className={styles.productCard__addtocart}>
               <button
                 className={styles.button}
@@ -128,36 +116,20 @@ export const Product = ({ id, layout }: ProductProps) => {
   }
   if (layout === 'cartItem') {
     return (
-      // <div className={styles.Product}>
-      <div className={cartStyles.cart__product}>
-        <div className={styles.productCard__image}>
-          <Link href={`/shop/item/${product.id}`}>
-            <div className={styles.productCard__pic}>
-              <img
-                className={styles.productCard__img}
-                src={`../../images/complexProducts/${product.id}.jpg`}
-                alt={product.name}
-              />
-            </div>
-          </Link>
+      <>
+        <div className={styles.cartItem__image}>
+          <div className={styles.cartItem__pic}>
+            <img
+              className={styles.cartItem__img}
+              src={`../../images/complexProducts/${product.id}.jpg`}
+              alt={product.name}
+            />
+          </div>
         </div>
-        <div className={styles.productCard__info}>
-          <div className={styles.productCard__name}>{product.name}</div>
-          {/* <div className={styles.productCard}__description'>{product.description}</div>
-          <ul className='reviews__tags'>
-            {product.tags.map((tag) => (
-              <li className='reviews__tags-item tag tag--green' key={tag}>
-                {tag}
-              </li>
-            ))}
-          </ul> */}
+        <div className={`${styles.cartItem__info} ${cartStyles.info}`}>
+          <div className={styles.cartItem__name}>{product.name}</div>
         </div>
-
-        <div className={styles.productCard__buy}>
-          <div className={styles.productCard__price}>{product.price}</div>
-        </div>
-      </div>
-      // </div>
+      </>
     );
   }
   return null;

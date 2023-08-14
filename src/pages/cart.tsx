@@ -44,28 +44,54 @@ export default function Cart() {
             <>
               <ul className={styles.cart__list}>
                 {cart.map((cartItem) => (
-                  <li key={cartItem.id} className={styles.cart__item}>
-                    <Product id={cartItem.id} layout={'cartItem'} />
-                    <div className={styles.cart__quantity}>
-                      <button onClick={() => decreaseQuantity(cartItem.id)}>-</button>
-                      <b>{cartItem.quantity} шт</b>
-                      <button onClick={() => increaseQuantity(cartItem.id)}>+</button>
-                      <p>{`${cartItem.quantity! * cartItem.price!} \u20bd`}</p>
-                      <button onClick={() => removeFromCart(cartItem.id)}>
-                        удалить из корзины
+                  <li key={cartItem.id}>
+                    <Link href={`/shop/item/${cartItem.id}`} className={styles.cart__item}>
+                      <Product id={cartItem.id} layout={'cartItem'} />
+                      <div className={styles.cart__quantity_block}>
+                        <div className={styles.cart__quantity_container}>
+                          <div className={styles.cart__quantity}>
+                            <button
+                              onClick={(e) => {
+                                e.preventDefault();
+                                decreaseQuantity(cartItem.id);
+                              }}
+                              className={`${styles.button} ${styles.smallButton}`}
+                            >
+                              -
+                            </button>
+                            <p>{`${cartItem.quantity}\u00A0шт`}</p>
+                            <button
+                              onClick={(e) => {
+                                e.preventDefault();
+                                increaseQuantity(cartItem.id);
+                              }}
+                              className={`${styles.button} ${styles.smallButton}`}
+                            >
+                              +
+                            </button>
+                          </div>
+                          <div className={styles.cart__price}>
+                            <b>{`${cartItem.quantity! * cartItem.price!}\u00A0\u20bd`}</b>
+                          </div>
+                        </div>
+                      </div>
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          removeFromCart(cartItem.id);
+                        }}
+                        className={`${styles.button} ${styles.smallButton} ${styles.removeButton}`}
+                      >
+                        x
                       </button>
-                    </div>
+                    </Link>
                   </li>
                 ))}
               </ul>
               <br />
               <b>
-                <p>ИТОГО: {`${amount} \u20bd`}</p>
+                <p>ИТОГО: {`${amount}\u00A0\u20bd`}</p>
               </b>
-              {/* <Link className={styles.button} href='/order'>
-                {' '}
-                Перейти к оформлению
-              </Link> */}
               <br />
               <button className={styles.button} onClick={() => router.push('/order')}>
                 Перейти к оформлению

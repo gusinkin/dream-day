@@ -1,91 +1,5 @@
 @import './base.scss';
 
-.productCard {
-  // border: 1px solid black;
-  width: 220px;
-  // height: 500px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  @include tablets {
-    width: 200px;
-  }
-  @include phones {
-    width: 160px;
-  }
-
-  &__link {
-    width: 100%;
-    height: 100%;
-    transition: transform 120ms ease-in-out;
-    &:hover {
-      transform: scale(1.05);
-      .productCard__info {
-        text-decoration: underline;
-      }
-    }
-  }
-  &__image {
-    // эти размеры для корзины нужны другие, надо отвязать
-    width: 100%;
-    margin-bottom: 15px;
-  }
-  &__pic {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-  &__img {
-    max-width: 100%;
-    max-height: 100%;
-  }
-  &__info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 7px;
-    /* word-break: break-all; */
-    /* нормально сделать перенос */
-  }
-  &__name {
-    font-weight: 300;
-    text-transform: uppercase;
-  }
-  &__buy {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    margin-bottom: 7px;
-    @include tablets {
-    }
-    @include phones {
-      flex-direction: column;
-    }
-  }
-  &__price {
-    font-size: 20px;
-    @include phones {
-      margin-bottom: 7px;
-    }
-  }
-}
-
-.cartproduct {
-  // width: 250px;
-  text-align: center;
-  /* justify-content: space-between; */
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-  align-items: center;
-  gap: 20px;
-  height: 200px;
-}
-
 .productPage {
   display: flex;
   height: 100%;
@@ -143,6 +57,125 @@
     margin-bottom: 10px;
     font-size: 20px;
   }
-  // &__addtocart {
-  // }
+}
+
+.productCard {
+  // border: 1px solid black;
+  width: 220px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include tablets {
+    width: 200px;
+  }
+  @include phones {
+    width: 160px;
+  }
+
+  &__link {
+    width: 100%;
+    height: 100%;
+    transition: transform 120ms ease-in-out;
+    &:hover {
+      transform: scale(1.05);
+      .productCard__info {
+        text-decoration: underline;
+      }
+    }
+  }
+  &__image {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  &__pic {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  &__img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 7px;
+    /* word-break: break-all; */
+    /* нормально сделать перенос */
+  }
+  &__name {
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+  &__buy {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 7px;
+    @include tablets {
+    }
+    @include phones {
+      flex-direction: column;
+    }
+  }
+  &__price {
+    font-size: 20px;
+    @include phones {
+      margin-bottom: 7px;
+    }
+  }
+}
+
+.cartItem {
+  &__image {
+    width: 33.3%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 250px;
+    @include tablets {
+      width: 50%;
+      max-width: 250px;
+    }
+    @include phones {
+      max-width: 150px;
+    }
+  }
+  &__pic {
+    height: 100%;
+    overflow: hidden;
+    @include phones {
+      height: 150px;
+    }
+  }
+  &__img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    @include tablets {
+      height: 60%;
+      width: calc(100% - 250px);
+      padding: 30px 30px 0;
+    }
+    @include phones {
+      width: calc(100% - 150px);
+      height: 70%;
+    }
+    /* word-break: break-all; */
+    /* нормально сделать перенос */
+  }
+  &__name {
+    font-weight: 300;
+    text-transform: uppercase;
+  }
 }

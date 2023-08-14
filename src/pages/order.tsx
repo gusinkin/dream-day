@@ -56,7 +56,7 @@ export default function Order() {
     let output = '\n';
     cart.forEach((item, index) => {
       const { name, price, quantity } = item;
-      output += `${index + 1}  |  ${name}  |  ${price} \u20bd  |  ${quantity} шт. \n`;
+      output += `${index + 1}  |  ${name}  |  ${price}\u00A0\u20bd  |  ${quantity} шт. \n`;
     });
     return output;
   };
@@ -74,7 +74,7 @@ export default function Order() {
       email: formData.get('email'),
       comment: formData.get('comment'),
       cart: beautifyCart(cart),
-      total: `${amount.toString()} \u20bd`,
+      total: `${amount.toString()}\u00A0\u20bd`,
     };
 
     emailjs.send('service_njfh7ml', 'template_3wn7izp', template, 'dMZ5_POBysMOTiTGb').then(

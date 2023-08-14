@@ -14,35 +14,67 @@
   &__list {
     display: flex;
     flex-direction: column;
+    gap: 25px;
   }
   &__item {
+    position: relative;
     width: 100%;
     text-align: center;
-    /* justify-content: space-between; */
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 20px;
-    // этот размер потом можно уменьшить,
-    // когда будут свои размеры у картинки товара в корзине
     height: 250px;
-    //
+    transition: transform 120ms ease-in-out;
+    &:hover {
+      transform: scale(1.02);
+      // background: rgba(0, 0, 0, 0.116);
+      .info {
+        text-decoration: underline;
+      }
+    }
+    @include tablets {
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
 
-    border: 1px solid black;
+    // border: 1px solid black;
   }
-  &__product {
+  &__quantity_block {
     display: flex;
     flex-direction: row;
-    flex: 3;
     align-items: center;
+    justify-content: center;
     height: 100%;
+    width: 33.3%;
+    @include tablets {
+      height: 40%;
+      width: calc(100% - 250px);
+    }
+    @include phones {
+      width: calc(100% - 150px);
+      height: 30%;
+    }
+  }
+  &__quantity_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    height: 100%;
+    @include tablets {
+      flex-direction: column;
+      gap: 0;
+      justify-content: space-evenly;
+    }
   }
   &__quantity {
     display: flex;
-    flex: 2;
-    flex-direction: row;
     align-items: center;
     gap: 20px;
     height: 100%;
+    @include tablets {
+      height: auto;
+    }
   }
 }
