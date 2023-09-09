@@ -46,6 +46,7 @@
 .dark::after {
   opacity: 0.5;
   transition: opacity 1000ms;
+  filter: blur(3px);
 }
 .content {
   width: 100%;
