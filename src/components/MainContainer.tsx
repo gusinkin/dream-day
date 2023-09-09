@@ -58,7 +58,7 @@ export const MainContainer = ({
     } else {
       setHeaderHidden(true);
     }
-    if (scrollStatus.position < window.innerHeight * 0.1) {
+    if (scrollStatus.position < window.innerHeight * 0.2) {
       setHeaderColored(false);
     } else {
       setHeaderColored(true);
