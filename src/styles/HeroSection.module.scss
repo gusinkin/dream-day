@@ -39,6 +39,14 @@
       width: 44%;
       left: 54%;
     }
+    @include phones {
+      width: 86%;
+      left: 7%;
+      padding: 10vw 3vw;
+      background: #ffffffcc;
+      // background-color: #ffccfce6;
+      border-radius: 50px;
+    }
   }
   &__title {
     // font-size: 48px;
@@ -66,12 +74,17 @@
     @include tablets {
       font-size: 6.6vw;
     }
+    @include phones {
+      // font-size: 45px;
+      font-size: min(calc(20vw - 35px), 45px);
+    }
   }
   &__subtitle {
     color: $grayText;
     // font-size: 11px;
     // font-size: 16px;
-    font-size: min(1.15vw, 23px);
+    // font-size: min(1.15vw, 23px);
+    font-size: min(max(14px, 1.15vw), 23px);
 
     font-weight: 400;
     white-space: nowrap;
@@ -85,21 +98,32 @@
     // }
     @include tablets {
       // font-size: 1.52vw;
-      font-size: calc(0.8vw + 5px);
+      font-size: calc(0.8vw + 7px);
+    }
+    @include phones {
+      font-size: 13px;
+      // font-size: calc(0.8vw + 7px);
     }
   }
   &__text {
     color: $grayText;
     // font-size: 9px;
     // font-size: 13px;
-    font-size: min(0.95vw, 19px);
+    // font-size: min(0.95vw, 19px);
+    font-size: min(max(12px, 0.95vw), 19px);
 
     font-weight: 400;
     margin: 0.83rem 0;
     @include tablets {
       // font-size: 1.26vw;
-      font-size: calc(0.65vw + 5px);
+      font-size: calc(0.65vw + 7px);
+      // font-size: 13px;
       padding: 0 3vw;
+    }
+    @include phones {
+      font-size: 11px;
+      // font-size: calc(0.8vw + 7px);
+      padding: 0 5vw;
     }
   }
 }
