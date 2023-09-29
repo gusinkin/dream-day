@@ -44,7 +44,7 @@ export const Product = ({ id, layout }: ProductProps) => {
             <div className={styles.productPage__pic}>
               <img
                 className={styles.productPage__img}
-                src={`../../images/complexProducts/${product.id}.jpg`}
+                src={`../../images/complexProducts/big/${product.id}.jpg`}
                 alt={product.name}
               />
             </div>
@@ -87,7 +87,7 @@ export const Product = ({ id, layout }: ProductProps) => {
             <div className={styles.productCard__pic}>
               <img
                 className={styles.productCard__img}
-                src={`../../images/complexProducts/${product.id}.jpg`}
+                src={`../../images/complexProducts/small/${product.id}.jpg`}
                 alt={product.name}
               />
             </div>
@@ -121,7 +121,7 @@ export const Product = ({ id, layout }: ProductProps) => {
           <div className={styles.cartItem__pic}>
             <img
               className={styles.cartItem__img}
-              src={`../../images/complexProducts/${product.id}.jpg`}
+              src={`../../images/complexProducts/small/${product.id}.jpg`}
               alt={product.name}
             />
           </div>

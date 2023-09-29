@@ -119,6 +119,11 @@ export default function Order() {
               sx={{
                 marginBottom: '10px',
                 width: '100%',
+                // // color: 'error',
+                // // input: { color: 'red' },
+                // InputProps: {
+                //   color: 'secondary',
+                // },
               }}
             />
             <CustomPhonePicker onError={handlePhoneError} />
