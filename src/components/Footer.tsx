@@ -6,31 +6,9 @@ export const Footer = () => {
   return (
     <div className={styles.footer}>
       <div className={styles.footer__container}>
-        <Link className={styles.logo} href='/'>
-          <img className={styles.logo} src={''} alt='logo' />
-        </Link>
-        <nav className={styles.menu}>
-          <ul className={styles.menu__list}>
-            <li className={styles.menu__item}>
-              <Link className={styles.menu__link} href='/'>
-                Главная
-              </Link>
-            </li>
-            <li className={styles.menu__item}>
-              <Link className={styles.menu__link} href='/shop'>
-                Магазин
-              </Link>
-            </li>
-            <li className={styles.menu__item}>
-              <Link className={styles.menu__link} href='/cart'>
-                Корзина
-              </Link>
-            </li>
-          </ul>
-        </nav>{' '}
-        <Link className={styles.logo} href='/cart'>
-          <img className={styles.logo} src={''} alt='logo' />
-        </Link>
+        <p className={styles.footer__title}>Dream Day</p>
+        <p className={styles.footer__subtitle}>Создание счастливых моментов</p>
+        <p className={styles.footer__phone}>+7 (952) 447 96 53</p>
       </div>
     </div>
   );
