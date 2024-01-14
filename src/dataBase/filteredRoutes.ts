@@ -12,5 +12,5 @@ export const filteredRoutes: FilteredRoute[] = [
   { id: 5, name: '3 кота', link: '/shop/filter/3 кота' },
   { id: 6, name: 'золото', link: '/shop/filter/золото' },
   { id: 7, name: 'шары хром', link: '/shop/filter/шары хром' },
-  { id: 8, name: 'годовасие', link: '/shop/filter/годовасие' },
+  { id: 8, name: 'годовасиее', link: '/shop/filter/годовасие' },
 ];

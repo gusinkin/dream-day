@@ -43,9 +43,19 @@ export const Header = ({ hidden, colored }: HeaderProps) => {
                 Главная
               </button>
             </li>
-            <li className={styles.menu__item}>
+            {/* <li className={styles.menu__item}>
               <button className={styles.menu__link} onClick={() => scrollToSection(1)}>
                 Подобрать шарики
+              </button>
+            </li> */}
+            <li className={styles.menu__item}>
+              <button className={styles.menu__link} onClick={() => scrollToSection(2)}>
+                О нас
+              </button>
+            </li>
+            <li className={styles.menu__item}>
+              <button className={styles.menu__link} onClick={() => scrollToSection(3)}>
+                Доставка и оплата
               </button>
             </li>
             <li className={styles.menu__item}>
@@ -54,7 +64,7 @@ export const Header = ({ hidden, colored }: HeaderProps) => {
                 onClick={() => router.push('/shop')}
                 // href='/shop'
               >
-                Магазин
+                Каталог
               </button>
             </li>
             <li className={styles.menu__item}>

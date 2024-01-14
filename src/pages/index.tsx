@@ -4,10 +4,11 @@ import { HeroSection } from '@/components/HeroSection';
 import styles from '@/styles/Main.module.scss';
 import Link from 'next/link';
 import Head from 'next/head';
-import { SomeSection } from '@/components/SomeSection';
+import { DeliverySection } from '@/components/DeliverySection';
 import { FilteredRoutesSection } from '@/components/FilteredRoutesSection';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { AboutSection } from '@/components/AboutSection';
 
 export default function Main() {
   // useEffect(() => {
@@ -22,7 +23,8 @@ export default function Main() {
       <MainContainer keywords={'домашняя страница'}>
         <HeroSection />
         <FilteredRoutesSection />
-        <SomeSection />
+        <AboutSection />
+        <DeliverySection />
       </MainContainer>
     </>
   );

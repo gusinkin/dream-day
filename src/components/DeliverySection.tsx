@@ -1,10 +1,10 @@
-import styles from '@/styles/SomeSection.module.scss';
+import styles from '@/styles/DeliverySection.module.scss';
 
-export const SomeSection = () => {
+export const DeliverySection = () => {
   return (
-    <section className={`${styles.section} ${styles.someSection}`}>
+    <section className={`${styles.section} ${styles.deliverySection}`}>
       <div className={styles.section__container}>
-        <h2 className={styles.section__title}>О нас</h2>
+        <h2 className={styles.section__title}>Доставка и оплата</h2>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. A, similique ea voluptates cum
           accusamus molestias officiis magnam totam possimus modi et quasi nobis odit accusantium
