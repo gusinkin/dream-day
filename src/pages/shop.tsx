@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { complexProducts } from '../dataBase/complexProducts';
+import { ComplexProduct, complexProducts } from '../dataBase/complexProducts';
 import { Product } from '@/components/Product';
 import { MainContainer } from '@/components/MainContainer';
 import { useRouter } from 'next/router';
@@ -7,14 +7,20 @@ import styles from '@/styles/Shop.module.scss';
 import { Accordion, AccordionDetails, AccordionSummary, TextField } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { tagObjects } from '@/dataBase/tags';
+import { VirtuosoGrid } from 'react-virtuoso';
 
 // export default function Shop(defaultTags: string[] = []) {
 export interface ShopProps {
   defaultTags: string[];
 }
 export default function Shop({ defaultTags = [] }: ShopProps) {
+  // const screenWidth = window?.innerWidth;
+  // const LOAD_STEP = screenWidth > 1100 ? 10 : 6;
+  const LOAD_STEP = 10;
   const router = useRouter();
   const [dynamicProducts, setDynamicProducts] = useState(complexProducts);
+  // const [visibleProducts, setVisibleProducts] = useState(dynamicProducts.slice(0, LOAD_STEP * 2));
+  const [visibleProducts, setVisibleProducts] = useState<ComplexProduct[]>([]);
 
   const [tagsHaveBeenClicked, setTagsHaveBeenClicked] = useState(false);
   const tagsRef = useRef<HTMLInputElement[]>([]);
@@ -78,6 +84,12 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
     handleTags();
   }, []);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setVisibleProducts(dynamicProducts.slice(0, 2 * LOAD_STEP));
+    }, 0);
+  }, [dynamicProducts]);
+
   function handleSearch() {
     tagsRef.current.forEach((tag) => (tag.checked = false));
 
@@ -101,6 +113,14 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
   const [expanded, setExpanded] = useState(false);
   const handleAccordion = () => {
     setExpanded(!expanded);
+  };
+
+  const loadMore = (last: number) => {
+    return setTimeout(() => {
+      setVisibleProducts((prev) =>
+        prev.concat(dynamicProducts.slice(last + 1, last + 1 + LOAD_STEP))
+      );
+    }, 600);
   };
 
   return (
@@ -197,15 +217,43 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
         <br />
         <br />
 
-        <ul className={styles.catalog}>
+        {/* <ul className={styles.catalog}>
           {dynamicProducts.map((dynamicProduct) => (
             <li key={dynamicProduct.id} className={styles.catalog__item}>
               <Product id={dynamicProduct.id} layout={'productCard'} />
             </li>
           ))}
-        </ul>
-        {/* <Cart /> */}
+        </ul> */}
+
+        <VirtuosoGrid
+          useWindowScroll
+          data={visibleProducts}
+          endReached={loadMore}
+          overscan={200}
+          itemClassName={styles.catalog__item}
+          listClassName={styles.catalog}
+          itemContent={(index, dynamicProduct) => (
+            <li key={dynamicProduct.id} className={styles.catalog__item}>
+              <Product id={dynamicProduct.id} layout={'productCard'} />
+            </li>
+          )}
+          // components={{ Footer }}
+        />
       </div>
     </MainContainer>
   );
 }
+
+// const Footer = () => {
+//   return (
+//     <div
+//       style={{
+//         padding: '2rem',
+//         display: 'flex',
+//         justifyContent: 'center',
+//       }}
+//     >
+//       Loading...
+//     </div>
+//   );
+// };

@@ -17,5 +17,6 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    height: 400px; // Virtuoso требует элементы одинакового размера, иначе сходит с ума
   }
 }
