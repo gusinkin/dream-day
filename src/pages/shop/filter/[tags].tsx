@@ -18,14 +18,21 @@ export const getStaticProps: GetStaticProps = async ({ params }) => ({
 
 export default function FilteredShop() {
   const { query } = useRouter();
-  const str = query.tags;
-  let result: string[];
-  if (typeof str === 'string') {
-    if (str.includes('+')) {
-      result = str.split('+');
+  const stringWithTags = query.tags;
+  let tagRoutes: string[];
+
+  if (typeof stringWithTags === 'string') {
+    if (stringWithTags.includes('+')) {
+      tagRoutes = stringWithTags.split('+');
     } else {
-      result = [str];
+      tagRoutes = [stringWithTags];
     }
-  } else result = [];
-  return <Shop defaultTags={result} />;
+  } else tagRoutes = [];
+
+  const tagNames = tagRoutes.flatMap((tagRoute) => {
+    const obj = tagObjects.find((tagObject) => tagObject.route === tagRoute);
+    return obj ? obj.name : [];
+  });
+
+  return <Shop defaultTags={tagNames} />;
 }
