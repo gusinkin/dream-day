@@ -8,6 +8,23 @@
   // background-size: cover;
 }
 
+.aboutInfo {
+  flex: 0 0;
+}
+
 .aboutText {
   margin-bottom: 20px;
+}
+
+.imageContainer {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+.image {
+  max-width: 100%;
 }

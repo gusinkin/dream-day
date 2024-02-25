@@ -143,3 +143,13 @@ $phones: 520px;
 //   cursor: pointer;
 //   margin: 5px;
 // }
+
+// Стили для react-multi-carousel в AboutSection
+.react-multi-carousel-list {
+  flex: 1 1;
+}
+
+.react-multi-carousel-track {
+  align-items: center;
+  max-height: 100%;
+}
