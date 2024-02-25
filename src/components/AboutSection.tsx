@@ -18,6 +18,15 @@ const responsive = {
 };
 
 export const AboutSection = () => {
+  // Нужно указать количество фотографий:
+  const imageNumber = 5;
+  // и назвать их числами от 0 до (imageNumber-1)
+
+  let imageLinks: string[] = [];
+  for (let i = 0; i < imageNumber; i++) {
+    imageLinks.push(`../../images/about/${i}.jpg`);
+  }
+
   return (
     <section className={`${styles.section} ${styles.aboutSection}`}>
       <div className={styles.section__container}>
@@ -35,15 +44,15 @@ export const AboutSection = () => {
         </div>
 
         <Carousel autoPlay draggable={false} infinite responsive={responsive} ssr swipeable>
-          <div className={styles.imageContainer}>
-            <img className={styles.image} src='../../images/about/1.jpg' />
-          </div>
-          <div className={styles.imageContainer}>
-            <img className={styles.image} src='../../images/about/2.jpg' />
-          </div>
-          <div className={styles.imageContainer}>
-            <img className={styles.image} src='../../images/about/3.jpg' />
-          </div>
+          {imageLinks.map((link) => {
+            console.log(link);
+
+            return (
+              <div className={styles.imageContainer}>
+                <img className={styles.image} src={link} />
+              </div>
+            );
+          })}
         </Carousel>
       </div>
     </section>
