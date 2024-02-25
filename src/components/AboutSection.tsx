@@ -44,11 +44,9 @@ export const AboutSection = () => {
         </div>
 
         <Carousel autoPlay draggable={false} infinite responsive={responsive} ssr swipeable>
-          {imageLinks.map((link) => {
-            console.log(link);
-
+          {imageLinks.map((link, index) => {
             return (
-              <div className={styles.imageContainer}>
+              <div className={styles.imageContainer} key={index}>
                 <img className={styles.image} src={link} />
               </div>
             );
