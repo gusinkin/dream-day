@@ -4,8 +4,7 @@ import { Product } from '@/components/Product';
 import { MainContainer } from '@/components/MainContainer';
 import { useRouter } from 'next/router';
 import styles from '@/styles/Shop.module.scss';
-import { Accordion, AccordionDetails, AccordionSummary, TextField } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Dialog, TextField } from '@mui/material';
 import { tagObjects } from '@/dataBase/tags';
 import { VirtuosoGrid } from 'react-virtuoso';
 
@@ -110,9 +109,17 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
     }
   }
 
-  const [expanded, setExpanded] = useState(false);
-  const handleAccordion = () => {
-    setExpanded(!expanded);
+  const [tagsModalOpen, setTagsModalOpen] = useState(false);
+  const openTagsModal = () => setTagsModalOpen(true);
+  const closeTagsModal = () => setTagsModalOpen(false);
+
+  const uncheckTag = (name: string) => {
+    tagsRef.current.forEach((el) => {
+      if (el.value === name) {
+        el.checked = false;
+        handleTags();
+      }
+    });
   };
 
   const loadMore = (last: number) => {
@@ -124,123 +131,83 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
   };
 
   return (
-    <MainContainer keywords={'каталог'}>
-      <div className={styles.longpage__container}>
-        <TextField inputRef={searchInputRef} onChange={handleSearch} label='Поиск товара' />
-        {/* <input ref={searchInputRef} type='text' onChange={handleSearch} placeholder='Найти товар' /> */}
-        <br />
-        <br />
-        <Accordion
-          expanded={expanded}
-          onChange={handleAccordion}
-          sx={{
-            backgroundColor: 'transparent',
-            // border: 'none',
-          }}
-        >
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            {expanded ? (
-              'Тэги для поиска:'
-            ) : checkedTags.length ? (
-              <>
-                {/* <div style={{ padding: '4px 10px', display: 'flex', alignItems: 'center' }}> */}
-                <p>Тэги для поиска:</p>
-                {/* </div>{' '} */}
-                <ul className='controls'>
-                  {checkedTags.map((item, index) => (
-                    <li className='controls__item' key={item}>
-                      <label className='control__elem'>
-                        <input
-                          type='checkbox'
-                          name='tags'
-                          value={item}
-                          className='controls__checkbox'
-                          checked={true}
-                          ref={(element: HTMLInputElement) => (tagsRef.current[index] = element)}
-                          // onChange={handleTags}
-                          disabled
-                        />
-                        <div className='tag controls__tag'>{item}</div>
-                      </label>
-                    </li>
-                  ))}
-                </ul>
-              </>
-            ) : (
-              'Тэги для поиска'
-            )}
-          </AccordionSummary>
-          <AccordionDetails>
-            <ul className='controls'>
-              {tagObjects.map((item, index) => {
-                // console.log('', tagsRef.current[index]?.checked);
-                // console.log('', tagsRef.current);
+    <>
+      <MainContainer keywords={'каталог'}>
+        <div className={styles.longpage__container}>
+          <TextField inputRef={searchInputRef} onChange={handleSearch} label='Поиск товара' />
+          {/* <input ref={searchInputRef} type='text' onChange={handleSearch} placeholder='Найти товар' /> */}
 
-                return (
-                  <li className='controls__item' key={item.name}>
+          <br />
+          <br />
+
+          <p>Тэги для поиска:</p>
+          {checkedTags.length > 0 && (
+            <>
+              <ul className='controls'>
+                {checkedTags.map((item) => (
+                  <li className='controls__item' key={item}>
                     <label className='control__elem'>
                       <input
                         type='checkbox'
                         name='tags'
-                        value={item.name}
+                        value={item}
                         className='controls__checkbox'
-                        ref={(element: HTMLInputElement) => (tagsRef.current[index] = element)}
-                        onChange={handleTags}
+                        checked={true}
+                        onChange={() => uncheckTag(item)}
                       />
-                      <div className='tag controls__tag'>{item.name}</div>
+                      <div className='tag controls__tag'>{item}</div>
                     </label>
                   </li>
-                );
-              })}
-            </ul>
-          </AccordionDetails>
-        </Accordion>
-        {/* <div>
+                ))}
+              </ul>
+            </>
+          )}
+          <button className={styles.button} onClick={openTagsModal}>
+            Открыть
+          </button>
+
+          <br />
+          <br />
+
+          <VirtuosoGrid
+            useWindowScroll
+            data={visibleProducts}
+            endReached={loadMore}
+            overscan={200}
+            itemClassName={styles.catalog__item}
+            listClassName={styles.catalog}
+            itemContent={(index, dynamicProduct) => (
+              <li key={dynamicProduct.id} className={styles.catalog__item}>
+                <Product id={dynamicProduct.id} layout={'productCard'} />
+              </li>
+            )}
+            // components={{ Footer }}
+          />
+        </div>
+      </MainContainer>
+
+      <Dialog open={tagsModalOpen} onClose={closeTagsModal} scroll='body' keepMounted>
+        <div className={styles.modalContent}>
           <ul className='controls'>
-            {tags.map((item, index) => (
-              <li className='controls__item' key={item}>
+            {tagObjects.map((item, index) => (
+              <li className='controls__item' key={item.name}>
                 <label className='control__elem'>
                   <input
                     type='checkbox'
                     name='tags'
-                    value={item}
+                    value={item.name}
                     className='controls__checkbox'
                     ref={(element: HTMLInputElement) => (tagsRef.current[index] = element)}
                     onChange={handleTags}
                   />
-                  <div className='tag controls__tag'>{item}</div>
+                  <div className='tag controls__tag'>{item.name}</div>
                 </label>
               </li>
             ))}
           </ul>
-        </div> */}
-        <br />
-        <br />
-
-        {/* <ul className={styles.catalog}>
-          {dynamicProducts.map((dynamicProduct) => (
-            <li key={dynamicProduct.id} className={styles.catalog__item}>
-              <Product id={dynamicProduct.id} layout={'productCard'} />
-            </li>
-          ))}
-        </ul> */}
-
-        <VirtuosoGrid
-          useWindowScroll
-          data={visibleProducts}
-          endReached={loadMore}
-          overscan={200}
-          itemClassName={styles.catalog__item}
-          listClassName={styles.catalog}
-          itemContent={(index, dynamicProduct) => (
-            <li key={dynamicProduct.id} className={styles.catalog__item}>
-              <Product id={dynamicProduct.id} layout={'productCard'} />
-            </li>
-          )}
-          // components={{ Footer }}
-        />
-      </div>
-    </MainContainer>
+        </div>
+      </Dialog>
+    </>
   );
 }
 
