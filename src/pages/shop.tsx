@@ -4,7 +4,7 @@ import { Product } from '@/components/Product';
 import { MainContainer } from '@/components/MainContainer';
 import { useRouter } from 'next/router';
 import styles from '@/styles/Shop.module.scss';
-import { Dialog, TextField } from '@mui/material';
+import { Button, Dialog, TextField } from '@mui/material';
 import { tagObjects } from '@/dataBase/tags';
 import { VirtuosoGrid } from 'react-virtuoso';
 
@@ -134,13 +134,23 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
     <>
       <MainContainer keywords={'каталог'}>
         <div className={styles.longpage__container}>
-          <TextField inputRef={searchInputRef} onChange={handleSearch} label='Поиск товара' />
-          {/* <input ref={searchInputRef} type='text' onChange={handleSearch} placeholder='Найти товар' /> */}
+          <div className={styles.searchBlock}>
+            {/* <button className={styles.button} onClick={openTagsModal}>
+              Теги для поиска
+            </button> */}
+            <Button variant='contained' onClick={openTagsModal}>
+              Теги для поиска
+            </Button>
+            <TextField
+              inputRef={searchInputRef}
+              onChange={handleSearch}
+              label='Текстовый поиск товара'
+            />
+          </div>
 
           <br />
-          <br />
 
-          <p>Тэги для поиска:</p>
+          {/* <p>Тэги для поиска:</p> */}
           {checkedTags.length > 0 && (
             <>
               <ul className='controls'>
@@ -162,9 +172,6 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
               </ul>
             </>
           )}
-          <button className={styles.button} onClick={openTagsModal}>
-            Открыть
-          </button>
 
           <br />
           <br />

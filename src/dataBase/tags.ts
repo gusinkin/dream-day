@@ -7,6 +7,7 @@ export interface TagObject {
 }
 
 export const tagObjects: TagObject[] = [
+  //Цвета
   { name: 'розовые', route: 'розовые', type: 'color' },
   { name: 'золото', route: 'золото', type: 'color' },
   { name: 'розовое золото', route: 'розовое золото', type: 'color' },
@@ -21,6 +22,7 @@ export const tagObjects: TagObject[] = [
   { name: 'сиреневые', route: 'сиреневые', type: 'color' },
   { name: 'бирюзовые', route: 'бирюзовые', type: 'color' },
 
+  //Повод
   { name: 'день рождения', route: 'день рождения', type: 'reason' },
   { name: 'определение пола', route: 'определение пола', type: 'reason' },
   { name: 'годовасие', route: 'годовасие', type: 'reason' },
@@ -30,12 +32,14 @@ export const tagObjects: TagObject[] = [
   { name: 'выпускной', route: 'выпускной', type: 'reason' },
   { name: '1 сентября', route: '1 сентября', type: 'reason' },
 
+  //Кому
   { name: 'девочке', route: 'девочке', type: 'for' },
   { name: 'мальчику', route: 'мальчику', type: 'for' },
   { name: 'парню/мужчине', route: 'парню мужчине', type: 'for' },
   { name: 'девушке/женщине', route: 'девушке женщине', type: 'for' },
   { name: 'маме', route: 'маме', type: 'for' },
 
+  //Герои
   { name: 'животные', route: 'животные', type: 'hero' },
   { name: 'заяц', route: 'заяц', type: 'hero' },
   { name: 'олень', route: 'олень', type: 'hero' },
@@ -60,7 +64,16 @@ export const tagObjects: TagObject[] = [
   { name: 'золушка', route: 'золушка', type: 'hero' },
   { name: 'машинка', route: 'машинка', type: 'hero' },
 
-  { name: '18+', route: '18 плюс', type: 'rest' },
+  //Тип
+  { name: 'коробка-сюрприз', route: 'коробка-сюрприз', type: 'rest' },
+  { name: 'шары под потолок', route: 'шары под потолок', type: 'rest' },
+  { name: 'шары на стойке', route: 'шары на стойке', type: 'rest' },
+  { name: 'фотозона', route: 'фотозона', type: 'rest' },
+  { name: 'шар с коробкой', route: 'шар с коробкой', type: 'rest' },
+  { name: 'шар с водой', route: 'шар с водой', type: 'rest' },
+
+  //Прочее
+  { name: '18+', route: '18+', type: 'rest' },
   { name: 'сафари', route: 'сафари', type: 'rest' },
   { name: 'космос', route: 'космос', type: 'rest' },
   { name: 'футбол', route: 'футбол', type: 'rest' },
@@ -71,13 +84,8 @@ export const tagObjects: TagObject[] = [
   { name: 'надпись', route: 'надпись', type: 'rest' },
   { name: 'шар кристалл', route: 'шар кристалл', type: 'rest' },
   { name: 'цифры', route: 'цифры', type: 'rest' },
-  { name: 'коробка-сюрприз', route: 'коробка-сюрприз', type: 'rest' },
   { name: 'шар гигант', route: 'шар гигант', type: 'rest' },
-  { name: 'шары под потолок', route: 'шары под потолок', type: 'rest' },
-  { name: 'шары на стойке', route: 'шары на стойке', type: 'rest' },
-  { name: 'фотозона', route: 'фотозона', type: 'rest' },
-  { name: 'шар с коробкой', route: 'шар с коробкой', type: 'rest' },
-  { name: 'шар с водой', route: 'шар с водой', type: 'rest' },
 
+  //Скрытые теги
   { name: 'ручная цена', route: 'ручная цена', type: 'hidden' },
 ];

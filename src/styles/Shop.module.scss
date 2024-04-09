@@ -20,3 +20,12 @@
     height: 400px; // Virtuoso требует элементы одинакового размера, иначе сходит с ума
   }
 }
+
+.searchBlock {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  & > div {
+    flex: 1;
+  }
+}
