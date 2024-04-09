@@ -8,7 +8,6 @@ import { Header } from './Header';
 import { Footer } from './Footer';
 import { ReactElement, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import path from 'path';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,6 +27,9 @@ export const MainContainer = ({
     up: true,
   });
   const { pathname } = useRouter();
+
+  const isFooterLarge = pathname === '/';
+
   const handleScroll = (event: Event) => {
     setScrollStatus((prev) => {
       return {
@@ -79,7 +81,7 @@ export const MainContainer = ({
       >
         {children}
       </div>
-      <Footer />
+      <Footer large={isFooterLarge} />
     </div>
   );
 };

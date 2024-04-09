@@ -11,18 +11,19 @@
   align-items: flex-start;
   justify-content: space-between;
   height: 10vh;
-  // padding: rem(23px) 0;
-  // background: beige;
-  background: rgb(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #d5b172, #854f28);
+  color: #fff;
+  font-weight: 800;
+  text-transform: uppercase;
   &__container {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     justify-content: space-between;
-    // width: $containerWidth;
     width: 25%;
     margin-right: 2.5%;
     margin-left: auto;
+    // width: $containerWidth;
     // margin: auto auto;
     // max-width: $maxWidth;
   }
@@ -37,18 +38,18 @@
     white-space: nowrap;
     text-align: center;
 
-    background-color: #854f28;
-    background-image: linear-gradient(135deg, #d5b172, #854f28);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    // background-color: #854f28;
+    // background-image: linear-gradient(135deg, #d5b172, #854f28);
+    // background-clip: text;
+    // -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
   }
   &__subtitle {
-    background-color: #854f28;
-    background-image: linear-gradient(135deg, #d5b172, #854f28);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    // background-color: #854f28;
+    // background-image: linear-gradient(135deg, #d5b172, #854f28);
+    // background-clip: text;
+    // -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
     font-size: 12px;
     // font-size: min(1.15vw, 23px);
     // font-size: min(max(14px, 1.15vw), 23px);
@@ -57,7 +58,29 @@
     white-space: nowrap;
     text-align: center;
   }
-  &__phone {
-    text-decoration: underline;
+  // &__phone {
+  // text-decoration: underline;
+  // }
+}
+
+.large {
+  height: 50vh;
+  & .footer {
+    &__container {
+      align-items: center;
+      justify-content: center;
+      width: $containerWidth;
+      max-width: $maxWidth;
+      margin: auto;
+    }
+    &__title {
+      font-size: max(min(5vw, 70px), 40px);
+    }
+    &__subtitle {
+      font-size: max(min(1.5vw, 20px), 12px);
+    }
+    &__phone {
+      font-size: max(min(4vw, 55px), 25px);
+    }
   }
 }
