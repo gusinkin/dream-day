@@ -1,23 +1,16 @@
 @import './base.scss';
 
 .link {
-  // aspect-ratio: 1 / 1;
   display: block;
-  // width: 300px;
-  // height: 300px;
   height: 100%;
   width: 100%;
-  // border: 2px solid black;
   font-weight: 700;
-  font-size: 32px;
-  // white-space: nowrap;
   color: #fff;
   background-color: #000;
   position: relative;
   transition: transform 150ms ease-in-out;
   text-transform: uppercase;
   &:hover {
-    // text-decoration: underline;
     transform: scale(1.05);
     & .link__img {
       opacity: 1;
@@ -32,15 +25,18 @@
     height: 100%;
     object-fit: cover;
     opacity: 0.6;
-    // &:hover {
-    //   opacity: 1;
-    // }
   }
   &__text {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    // transition: opacity 150ms ease-in-out;
+    font-size: min(calc(3px + 2.5vw), 38px);
+    @include tablets {
+      font-size: calc(5px + 2.5vw);
+    }
+    @include phones {
+      font-size: min(calc(7px + 2.5vw), 18px);
+    }
   }
 }
