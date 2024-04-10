@@ -29,3 +29,11 @@
     flex: 1;
   }
 }
+.tagsBlock {
+  height: 45px;
+  display: flex;
+}
+.tagsList {
+  display: flex;
+  flex-wrap: wrap;
+}

@@ -150,28 +150,29 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
 
           <br />
 
-          {/* <p>Тэги для поиска:</p> */}
-          {checkedTags.length > 0 && (
-            <>
-              <ul className='controls'>
-                {checkedTags.map((item) => (
-                  <li className='controls__item' key={item}>
-                    <label className='control__elem'>
-                      <input
-                        type='checkbox'
-                        name='tags'
-                        value={item}
-                        className='controls__checkbox'
-                        checked={true}
-                        onChange={() => uncheckTag(item)}
-                      />
-                      <div className='tag controls__tag'>{item}</div>
-                    </label>
-                  </li>
-                ))}
-              </ul>
-            </>
-          )}
+          <div className={styles.tagsBlock}>
+            {checkedTags.length > 0 && (
+              <>
+                <ul className={styles.tagsList}>
+                  {checkedTags.map((item) => (
+                    <li className='controls__item' key={item}>
+                      <label className='control__elem'>
+                        <input
+                          type='checkbox'
+                          name='tags'
+                          value={item}
+                          className='controls__checkbox'
+                          checked={true}
+                          onChange={() => uncheckTag(item)}
+                        />
+                        <div className='tag controls__tag'>{item}</div>
+                      </label>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </div>
 
           <br />
           <br />
