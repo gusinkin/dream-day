@@ -7,6 +7,9 @@ import { CartProviderValue } from '../context/CartProvider';
 import styles from '@/styles/Product.module.scss';
 import cartStyles from '@/styles/Cart.module.scss';
 import { TagRoute } from './TagRoute';
+import { Button } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 export interface ProductProps {
   id: number;
@@ -98,7 +101,7 @@ export const Product = ({ id, layout }: ProductProps) => {
           <div className={styles.productCard__buy}>
             <div className={styles.productCard__price}>{`${product.price}\u00A0\u20bd`}</div>
             <div className={styles.productCard__addtocart}>
-              <button
+              {/* <Button
                 className={styles.button}
                 onClick={(e) => {
                   e.preventDefault();
@@ -107,7 +110,19 @@ export const Product = ({ id, layout }: ProductProps) => {
                 }}
               >
                 В корзину
-              </button>
+              </Button> */}
+              <IconButton
+                color='primary'
+                aria-label='add to shopping cart'
+                // className={styles.button}
+                onClick={(e) => {
+                  e.preventDefault();
+                  addToCart(product.id, 1);
+                  openSnackbar('Добавлено в корзину!');
+                }}
+              >
+                <AddShoppingCartIcon />
+              </IconButton>
             </div>
           </div>
         </Link>
