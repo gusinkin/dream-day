@@ -51,15 +51,26 @@ $phones: 520px;
   }
   &__title {
     line-height: 1.21;
+    font-size: 28px;
+    font-weight: 800;
+    white-space: nowrap;
+    text-align: center;
+    text-transform: uppercase;
     // color: $white;
-    color: rgb(127, 126, 65);
-    margin-bottom: 50px;
+    // color: rgb(127, 126, 65);
+    background-color: #854f28;
+    background-image: linear-gradient(135deg, #d5b172, #854f28);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    margin: 50px 0;
     // @include tablets {
     //   margin-bottom: rem(8px);
     // }
-    // @include phones {
-    //   line-height: 1;
-    // }
+    @include phones {
+      font-size: 22px;
+    }
   }
 }
 
