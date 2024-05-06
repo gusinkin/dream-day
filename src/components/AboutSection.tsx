@@ -19,7 +19,7 @@ const responsive = {
 
 export const AboutSection = () => {
   // Нужно указать количество фотографий:
-  const imageNumber = 5;
+  const imageNumber = 6;
   // и назвать их числами от 0 до (imageNumber-1)
 
   let imageLinks: string[] = [];
