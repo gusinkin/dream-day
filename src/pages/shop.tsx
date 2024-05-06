@@ -84,9 +84,10 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
   }, []);
 
   useEffect(() => {
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       setVisibleProducts(dynamicProducts.slice(0, 2 * LOAD_STEP));
     }, 0);
+    return () => clearTimeout(timeout);
   }, [dynamicProducts]);
 
   function handleSearch() {
@@ -194,7 +195,7 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
         </div>
       </MainContainer>
 
-      <Dialog open={tagsModalOpen} onClose={closeTagsModal} scroll='body' keepMounted>
+      <Dialog open={tagsModalOpen} onClose={closeTagsModal} scroll='body' keepMounted disablePortal>
         <div className={styles.modalContent}>
           <ul className='controls'>
             {tagObjects.map((item, index) => (
