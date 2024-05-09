@@ -156,8 +156,14 @@ $phones: 520px;
 //   margin: 5px;
 // }
 
-.modalContent {
-  padding: 10%;
+.closeIcon {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  @include tablets {
+    top: 5vw;
+    right: 5vw;
+  }
 }
 
 // Стили для react-multi-carousel в AboutSection

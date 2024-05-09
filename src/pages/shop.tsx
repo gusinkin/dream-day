@@ -4,9 +4,10 @@ import { Product } from '@/components/Product';
 import { MainContainer } from '@/components/MainContainer';
 import { useRouter } from 'next/router';
 import styles from '@/styles/Shop.module.scss';
-import { Button, Dialog, TextField } from '@mui/material';
+import { Button, Dialog, IconButton, TextField } from '@mui/material';
 import { tagObjects } from '@/dataBase/tags';
 import { VirtuosoGrid } from 'react-virtuoso';
+import CloseIcon from '@mui/icons-material/Close';
 
 // export default function Shop(defaultTags: string[] = []) {
 export interface ShopProps {
@@ -197,6 +198,11 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
 
       <Dialog open={tagsModalOpen} onClose={closeTagsModal} scroll='body' keepMounted disablePortal>
         <div className={styles.modalContent}>
+          <div className={styles.closeIcon}>
+            <IconButton color='primary' onClick={closeTagsModal}>
+              <CloseIcon />
+            </IconButton>
+          </div>
           <ul className='controls'>
             {tagObjects.map((item, index) => (
               <li className='controls__item' key={item.name}>

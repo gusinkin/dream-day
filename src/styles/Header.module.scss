@@ -29,6 +29,21 @@
     width: $containerWidth;
     margin: auto auto;
     max-width: $maxWidth;
+    &_desktop {
+      display: block;
+      @include tablets {
+        display: none;
+      }
+    }
+    &_mobile {
+      display: none;
+      @include tablets {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 5vw;
+      }
+    }
   }
   &::before {
     content: '';
@@ -49,8 +64,11 @@
 
 .menu {
   margin: 0 10px;
-  @include phones {
-    margin: 0;
+  @include tablets {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   &__list {
     flex: 1;
@@ -59,8 +77,10 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 15px;
-    @include phones {
+    @include tablets {
+      flex-direction: column;
       justify-content: center;
+      gap: 40px;
     }
   }
   // &__item {
