@@ -5,23 +5,44 @@ interface FooterProps {
 }
 
 export const Footer = ({ large }: FooterProps) => {
+  const FooterContent = () => (
+    <div className={styles.footer__container}>
+      <div className={styles.footer__text}>
+        <p className={styles.footer__title}>Dream Day</p>
+        <p className={styles.footer__subtitle}>Создание счастливых моментов</p>
+        <a href='tel:+7 (952) 447 96 53' className={styles.footer__phone}>
+          +7 (952) 447 96 53
+        </a>
+      </div>
+      <ul className={styles.footer__contacts}>
+        <li>
+          <a href='https://vk.com/dream_day_nn'>
+            <img src='../../svg/contacts/vk.svg' />
+          </a>
+        </li>
+        <li>
+          <a href='https://t.me/dreamday_nn'>
+            <img src='../../svg/contacts/tg.svg' />
+          </a>
+        </li>
+        <li>
+          <a href='wa.me/79524479653'>
+            <img src='../../svg/contacts/wa.svg' />
+          </a>
+        </li>
+      </ul>
+    </div>
+  );
+
   if (large)
     return (
       <div className={`${styles.footer} ${styles.large}`}>
-        <div className={styles.footer__container}>
-          <p className={styles.footer__title}>Dream Day</p>
-          <p className={styles.footer__subtitle}>Создание счастливых моментов</p>
-          <p className={styles.footer__phone}>+7 (952) 447 96 53</p>
-        </div>
+        <FooterContent />
       </div>
     );
   return (
     <div className={styles.footer}>
-      <div className={styles.footer__container}>
-        <p className={styles.footer__title}>Dream Day</p>
-        <p className={styles.footer__subtitle}>Создание счастливых моментов</p>
-        <p className={styles.footer__phone}>+7 (952) 447 96 53</p>
-      </div>
+      <FooterContent />
     </div>
   );
 };

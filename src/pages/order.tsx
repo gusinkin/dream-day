@@ -105,7 +105,7 @@ export default function Order() {
   return (
     <MainContainer keywords={'оформление заказа'}>
       <>
-        <div className={styles.shortpage__container}>
+        <div className={styles.longpage__container}>
           <h2 className={styles.section__title}>Оформление заказа</h2>
           <form action='' className={styles.form} ref={form} onSubmit={sendEmail}>
             <TextField
