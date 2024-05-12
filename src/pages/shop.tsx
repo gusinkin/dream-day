@@ -137,12 +137,12 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
       <MainContainer keywords={'каталог'}>
         <div className={styles.longpage__container}>
           <div className={styles.searchBlock}>
-            {/* <button className={styles.button} onClick={openTagsModal}>
-              Теги для поиска
-            </button> */}
-            <Button variant='contained' onClick={openTagsModal}>
+            <Button className={styles.button} onClick={openTagsModal}>
               Теги для поиска
             </Button>
+            {/* <Button variant='contained' onClick={openTagsModal}>
+              Теги для поиска
+            </Button> */}
             <TextField
               inputRef={searchInputRef}
               onChange={handleSearch}

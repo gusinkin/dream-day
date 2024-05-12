@@ -113,7 +113,9 @@
   }
   &__buy {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    row-gap: 5px;
+    // flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
     margin-bottom: 7px;
