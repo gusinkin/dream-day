@@ -29,10 +29,16 @@ export const Product = ({ id, layout }: ProductProps) => {
     return result;
   }
 
+  function getName(id: number) {
+    if (id >= 1000) return `Фотозона № ${id - 1000}`;
+    return `Композиция № ${id}`;
+  }
+
   function createProduct(id: number) {
     let result = complexProducts.find((item) => item.id === id)!;
     const price = getPrice(result);
-    result = { ...result, price };
+    const name = getName(id);
+    result = { ...result, price, name };
 
     return result;
   }
