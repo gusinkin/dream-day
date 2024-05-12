@@ -107,7 +107,7 @@ export const Product = ({ id, layout }: ProductProps) => {
           <div className={styles.productCard__buy}>
             <div className={styles.productCard__price}>{`${product.price}\u00A0\u20bd`}</div>
             <div className={styles.productCard__addtocart}>
-              <Button
+              <button
                 className={styles.button}
                 onClick={(e) => {
                   e.preventDefault();
@@ -116,7 +116,7 @@ export const Product = ({ id, layout }: ProductProps) => {
                 }}
               >
                 В корзину
-              </Button>
+              </button>
               {/* <IconButton
                 color='primary'
                 aria-label='add to shopping cart'
