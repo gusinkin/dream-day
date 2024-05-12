@@ -25,12 +25,13 @@
     align-items: center;
     height: 250px;
     transition: transform 120ms ease-in-out;
+    background: rgba(0, 0, 0, 0.116);
     &:hover {
       transform: scale(1.02);
       // background: rgba(0, 0, 0, 0.116);
-      .info {
-        text-decoration: underline;
-      }
+      // .info {
+      // text-decoration: underline;
+      // }
     }
     @include tablets {
       flex-direction: column;

@@ -149,6 +149,7 @@ export const Product = ({ id, layout }: ProductProps) => {
         </div>
         <div className={`${styles.cartItem__info} ${cartStyles.info}`}>
           <div className={styles.cartItem__name}>{product.name}</div>
+          <div className={styles.cartItem__description}>{product.description}</div>
         </div>
       </>
     );
