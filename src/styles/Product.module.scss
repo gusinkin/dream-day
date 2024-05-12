@@ -34,12 +34,33 @@
     flex: 1;
   }
   &__info_container {
-    padding-left: 5vw;
+    padding-left: min(5vw, 70px);
+    @include tablets {
+      padding-left: 0;
+    }
   }
   &__name {
-    font-weight: 300;
+    // font-weight: 300;
     text-transform: uppercase;
     margin-bottom: 10px;
+
+    line-height: 1.21;
+    font-size: 42px;
+    font-weight: 800;
+    white-space: nowrap;
+    text-align: center;
+    background-image: linear-gradient(135deg, #d5b172, #854f28);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    @include tablets {
+      font-size: 36px;
+    }
+    @include phones {
+      font-size: 28px;
+      white-space: initial;
+    }
   }
   &__description {
     margin-bottom: 10px;
@@ -51,6 +72,7 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    justify-content: center;
     flex-wrap: wrap;
   }
   &__price {
