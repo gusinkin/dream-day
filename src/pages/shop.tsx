@@ -198,8 +198,8 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
 
       <Dialog open={tagsModalOpen} onClose={closeTagsModal} scroll='body' keepMounted disablePortal>
         <div className={styles.modalContent}>
-          <div className={styles.closeIcon}>
-            <IconButton color='primary' onClick={closeTagsModal}>
+          <div className={styles.closeIconContainer}>
+            <IconButton className={styles.icon} onClick={closeTagsModal}>
               <CloseIcon />
             </IconButton>
           </div>

@@ -107,7 +107,7 @@ export const Header = ({ hidden, colored }: HeaderProps) => {
         </div>
 
         <div className={`${styles.header__container} ${styles.header__container_mobile}`}>
-          <IconButton color='primary' onClick={openMenuModal}>
+          <IconButton className={styles.icon} onClick={openMenuModal}>
             <MenuIcon />
           </IconButton>
         </div>
@@ -122,8 +122,8 @@ export const Header = ({ hidden, colored }: HeaderProps) => {
         disablePortal
       >
         <HeaderContent />
-        <div className={styles.closeIcon}>
-          <IconButton color='primary' onClick={closeMenuModal}>
+        <div className={styles.closeIconContainer}>
+          <IconButton className={styles.icon} onClick={closeMenuModal}>
             <CloseIcon />
           </IconButton>
         </div>

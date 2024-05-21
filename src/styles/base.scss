@@ -164,7 +164,14 @@ $phones: 520px;
 //   margin: 5px;
 // }
 
-.closeIcon {
+.icon {
+  color: #854f28;
+  &:hover {
+    background-color: #854f281f;
+  }
+}
+
+.closeIconContainer {
   position: absolute;
   top: 3%;
   right: 3%;

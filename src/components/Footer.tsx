@@ -26,7 +26,7 @@ export const Footer = ({ large }: FooterProps) => {
           </a>
         </li>
         <li>
-          <a href='wa.me/79524479653'>
+          <a href='https://wa.me/79524479653'>
             <img src='../../svg/contacts/wa.svg' />
           </a>
         </li>
