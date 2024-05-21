@@ -2,7 +2,7 @@ import type { ComplexProduct, ComplexProductsType } from '@/dataBase/complexProd
 import { complexProducts } from '@/dataBase/complexProducts';
 import React, { createContext, Dispatch, ReactElement, useEffect, useState } from 'react';
 import { baseBlocks } from '@/dataBase/baseBlocks';
-import { loadState } from './localStorage';
+import { loadCartState } from './localStorage';
 import { Snackbar } from '@mui/material';
 
 export interface CartProviderValue {
@@ -18,7 +18,7 @@ export interface CartProviderValue {
 export const cartContext = createContext<CartProviderValue | null>(null);
 
 export function CartProvider({ children }: { children: ReactElement }) {
-  const initialCart: ComplexProductsType = loadState();
+  const initialCart: ComplexProductsType = loadCartState();
   const [cart, setCart] = useState<ComplexProductsType>([]);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarText, setSnackbarText] = useState('');

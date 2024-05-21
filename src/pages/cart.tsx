@@ -8,7 +8,7 @@ import { Product } from '@/components/Product';
 import { useState } from 'react';
 import { ComplexProductsType } from '@/dataBase/complexProducts';
 import styles from '@/styles/Cart.module.scss';
-import { saveState } from '@/context/localStorage';
+import { saveCartState } from '@/context/localStorage';
 import { useRouter } from 'next/router';
 
 export default function Cart() {
@@ -30,7 +30,7 @@ export default function Cart() {
 
   useEffect(() => {
     setAmount(countTotal(cart));
-    saveState(cart);
+    saveCartState(cart);
   }, [cart]);
 
   return (

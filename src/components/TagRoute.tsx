@@ -12,7 +12,7 @@ export const TagRoute = (props: TagLinkProps) => {
   const tag = tagObjects.find((obj) => obj.name === tagName);
   // console.log('tag', tag);
   const route = `/shop/filter/${tag?.route}`;
-  console.log('route', route);
+  // console.log('route', route);
 
   if (tag) {
     return (

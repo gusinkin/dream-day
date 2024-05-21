@@ -8,16 +8,19 @@ import { Button, Dialog, IconButton, TextField } from '@mui/material';
 import { tagObjects } from '@/dataBase/tags';
 import { VirtuosoGrid } from 'react-virtuoso';
 import CloseIcon from '@mui/icons-material/Close';
+import { loadTagsState, saveTagsState } from '@/context/localStorage';
 
 // export default function Shop(defaultTags: string[] = []) {
 export interface ShopProps {
-  defaultTags: string[];
+  presetTags: string[];
 }
-export default function Shop({ defaultTags = [] }: ShopProps) {
+export default function Shop({ presetTags = [] }: ShopProps) {
   // const screenWidth = window?.innerWidth;
   // const LOAD_STEP = screenWidth > 1100 ? 10 : 6;
   const LOAD_STEP = 10;
   const router = useRouter();
+  const defaultTags = presetTags.length > 0 ? presetTags : loadTagsState();
+
   const [dynamicProducts, setDynamicProducts] = useState(complexProducts);
   // const [visibleProducts, setVisibleProducts] = useState(dynamicProducts.slice(0, LOAD_STEP * 2));
   const [visibleProducts, setVisibleProducts] = useState<ComplexProduct[]>([]);
@@ -78,6 +81,8 @@ export default function Shop({ defaultTags = [] }: ShopProps) {
     } else {
       setDynamicProducts(complexProducts);
     }
+
+    saveTagsState(tagsChecked);
   }
 
   useEffect(() => {

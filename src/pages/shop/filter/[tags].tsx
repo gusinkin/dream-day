@@ -34,5 +34,5 @@ export default function FilteredShop() {
     return obj ? obj.name : [];
   });
 
-  return <Shop defaultTags={tagNames} />;
+  return <Shop presetTags={tagNames} />;
 }
