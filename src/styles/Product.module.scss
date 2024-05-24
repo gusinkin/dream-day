@@ -173,6 +173,7 @@
   &__pic {
     height: 100%;
     overflow: hidden;
+    display: flex;
     @include phones {
       height: 150px;
     }
@@ -215,10 +216,10 @@
 
     @include tablets {
       font-size: 24px;
+      white-space: initial;
     }
     @include phones {
       font-size: 20px;
-      white-space: initial;
     }
   }
   &__description {

@@ -10,6 +10,9 @@ import { ComplexProductsType } from '@/dataBase/complexProducts';
 import styles from '@/styles/Cart.module.scss';
 import { saveCartState } from '@/context/localStorage';
 import { useRouter } from 'next/router';
+import IconButton from '@mui/material/IconButton';
+import { Add, Remove } from '@mui/icons-material';
+import CloseIcon from '@mui/icons-material/Close';
 
 export default function Cart() {
   const {
@@ -50,40 +53,42 @@ export default function Cart() {
                       <div className={styles.cart__quantity_block}>
                         <div className={styles.cart__quantity_container}>
                           <div className={styles.cart__quantity}>
-                            <button
+                            <IconButton
+                              className={styles.icon}
                               onClick={(e) => {
                                 e.preventDefault();
                                 decreaseQuantity(cartItem.id);
                               }}
-                              className={`${styles.button} ${styles.smallButton}`}
                             >
-                              -
-                            </button>
+                              <Remove />
+                            </IconButton>
                             <p>{`${cartItem.quantity}\u00A0шт`}</p>
-                            <button
+                            <IconButton
+                              className={styles.icon}
                               onClick={(e) => {
                                 e.preventDefault();
                                 increaseQuantity(cartItem.id);
                               }}
-                              className={`${styles.button} ${styles.smallButton}`}
                             >
-                              +
-                            </button>
+                              <Add />
+                            </IconButton>
                           </div>
                           <div className={styles.cart__price}>
                             <b>{`${cartItem.quantity! * cartItem.price!}\u00A0\u20bd`}</b>
                           </div>
                         </div>
                       </div>
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          removeFromCart(cartItem.id);
-                        }}
-                        className={`${styles.button} ${styles.smallButton} ${styles.removeButton}`}
-                      >
-                        x
-                      </button>
+                      <div className={styles.removeButton}>
+                        <IconButton
+                          className={styles.icon}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            removeFromCart(cartItem.id);
+                          }}
+                        >
+                          <CloseIcon />
+                        </IconButton>
+                      </div>
                     </Link>
                   </li>
                 ))}
