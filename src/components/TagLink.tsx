@@ -1,18 +1,18 @@
 import { TagObject, tagObjects } from '@/dataBase/tags';
-import styles from '@/styles/TagRoute.module.scss';
+import styles from '@/styles/TagLink.module.scss';
 import Link from 'next/link';
 
 export interface TagLinkProps {
   tagName: string;
 }
 
-export const TagRoute = (props: TagLinkProps) => {
+// Ссылка в виде тега, при переходе по ней открывается каталог,
+// отфильтрованный по этому тегу
+export const TagLink = (props: TagLinkProps) => {
   const { tagName } = props;
 
   const tag = tagObjects.find((obj) => obj.name === tagName);
-  // console.log('tag', tag);
   const route = `/shop/filter/${tag?.route}`;
-  // console.log('route', route);
 
   if (tag) {
     return (

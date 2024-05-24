@@ -6,10 +6,7 @@ import { cartContext } from '../context/CartProvider';
 import { CartProviderValue } from '../context/CartProvider';
 import styles from '@/styles/Product.module.scss';
 import cartStyles from '@/styles/Cart.module.scss';
-import { TagRoute } from './TagRoute';
-import { Button } from '@mui/material';
-import IconButton from '@mui/material/IconButton';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { TagLink } from './TagLink';
 
 export interface ProductProps {
   id: number;
@@ -66,7 +63,7 @@ export const Product = ({ id, layout }: ProductProps) => {
                 <p>Теги для поиска:</p>
                 <ul className={styles.productPage__tags_container}>
                   {product.tags.map((tag) => (
-                    <TagRoute tagName={tag} key={tag} />
+                    <TagLink tagName={tag} key={tag} />
                   ))}
                 </ul>
               </div>
