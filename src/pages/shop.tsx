@@ -5,10 +5,19 @@ import { MainContainer } from '@/components/MainContainer';
 import { useRouter } from 'next/router';
 import styles from '@/styles/Shop.module.scss';
 import { Button, Dialog, IconButton, TextField } from '@mui/material';
-import { tagObjects } from '@/dataBase/tags';
+import {
+  tagObjects,
+  tagsTypeColor,
+  tagsTypeReason,
+  tagsTypeFor,
+  tagsTypeHero,
+  tagsTypeRest,
+  tagsTypeHidden,
+} from '@/dataBase/tags';
 import { VirtuosoGrid } from 'react-virtuoso';
 import CloseIcon from '@mui/icons-material/Close';
 import { loadTagsState, saveTagsState } from '@/context/localStorage';
+import { Tag } from '@/components/Tag';
 
 // export default function Shop(defaultTags: string[] = []) {
 export interface ShopProps {
@@ -145,9 +154,6 @@ export default function Shop({ presetTags = [] }: ShopProps) {
             <button className={styles.button} onClick={openTagsModal}>
               Теги для поиска
             </button>
-            {/* <Button variant='contained' onClick={openTagsModal}>
-              Теги для поиска
-            </Button> */}
             <TextField
               inputRef={searchInputRef}
               onChange={handleSearch}
@@ -157,24 +163,12 @@ export default function Shop({ presetTags = [] }: ShopProps) {
 
           <br />
 
-          <div className={styles.tagsBlock}>
+          <div className={styles.checkedTagsBlock}>
             {checkedTags.length > 0 && (
               <>
-                <ul className={styles.tagsList}>
+                <ul className={styles.checkedTagsList}>
                   {checkedTags.map((item) => (
-                    <li className='controls__item' key={item}>
-                      <label className='control__elem'>
-                        <input
-                          type='checkbox'
-                          name='tags'
-                          value={item}
-                          className='controls__checkbox'
-                          checked={true}
-                          onChange={() => uncheckTag(item)}
-                        />
-                        <div className='tag controls__tag'>{item}</div>
-                      </label>
-                    </li>
+                    <Tag tag={item} refFunction={null} onChange={uncheckTag} />
                   ))}
                 </ul>
               </>
@@ -208,21 +202,54 @@ export default function Shop({ presetTags = [] }: ShopProps) {
               <CloseIcon />
             </IconButton>
           </div>
-          <ul className='controls'>
-            {tagObjects.map((item, index) => (
-              <li className='controls__item' key={item.name}>
-                <label className='control__elem'>
-                  <input
-                    type='checkbox'
-                    name='tags'
-                    value={item.name}
-                    className='controls__checkbox'
-                    ref={(element: HTMLInputElement) => (tagsRef.current[index] = element)}
-                    onChange={handleTags}
-                  />
-                  <div className='tag controls__tag'>{item.name}</div>
-                </label>
-              </li>
+          <p>Цвет</p>
+          <ul className={styles.tagsTypeBlock}>
+            {tagsTypeColor.map((tag) => (
+              <Tag
+                tag={tag}
+                refFunction={(element: HTMLInputElement) => (tagsRef.current[tag.id] = element)}
+                onChange={handleTags}
+              />
+            ))}
+          </ul>
+          <p>Повод</p>
+          <ul className={styles.tagsTypeBlock}>
+            {tagsTypeReason.map((tag) => (
+              <Tag
+                tag={tag}
+                refFunction={(element: HTMLInputElement) => (tagsRef.current[tag.id] = element)}
+                onChange={handleTags}
+              />
+            ))}
+          </ul>
+          <p>Кому</p>
+          <ul className={styles.tagsTypeBlock}>
+            {tagsTypeFor.map((tag) => (
+              <Tag
+                tag={tag}
+                refFunction={(element: HTMLInputElement) => (tagsRef.current[tag.id] = element)}
+                onChange={handleTags}
+              />
+            ))}
+          </ul>
+          <p>Герои</p>
+          <ul className={styles.tagsTypeBlock}>
+            {tagsTypeHero.map((tag) => (
+              <Tag
+                tag={tag}
+                refFunction={(element: HTMLInputElement) => (tagsRef.current[tag.id] = element)}
+                onChange={handleTags}
+              />
+            ))}
+          </ul>
+          <p>Прочие</p>
+          <ul className={styles.tagsTypeBlock}>
+            {tagsTypeRest.map((tag) => (
+              <Tag
+                tag={tag}
+                refFunction={(element: HTMLInputElement) => (tagsRef.current[tag.id] = element)}
+                onChange={handleTags}
+              />
             ))}
           </ul>
         </div>

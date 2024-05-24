@@ -29,14 +29,25 @@
     flex: 1;
   }
 }
-.tagsBlock {
+
+.checkedTagsBlock {
   height: 45px;
   display: flex;
 }
-.tagsList {
+
+.checkedTagsList {
   display: flex;
   flex-wrap: wrap;
 }
+
 .modalContent {
   padding: 10%;
+}
+
+.tagsTypeBlock {
+  /* flex: 1; */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  // gap: 8px 7px;
 }

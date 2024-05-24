@@ -16,7 +16,7 @@ export const TagRoute = (props: TagLinkProps) => {
 
   if (tag) {
     return (
-      <li className={styles.tag} key={tag.name}>
+      <li className={styles.tagLink} key={tag.name}>
         <Link className={styles.link} href={route}>
           {tag.name}
         </Link>
