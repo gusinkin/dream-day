@@ -19,7 +19,7 @@ export const Tag = ({ tag, refFunction, onChange }: TagProps | CheckedTagProps) 
   if (refFunction) {
     return (
       // теги для фильтрации, которые появляются в модалке
-      <li key={tag.name}>
+      <li>
         <label className={styles.label}>
           <input
             type='checkbox'
@@ -36,7 +36,7 @@ export const Tag = ({ tag, refFunction, onChange }: TagProps | CheckedTagProps) 
   }
   return (
     // отмеченные теги, которые выносятся перед списком товаров
-    <li key={tag}>
+    <li>
       <label className={styles.label}>
         <input type='checkbox' name='tags' value={tag} className={styles.checkbox} checked={true} />
         <div className={`${styles.tag} ${styles.tagWithDelete}`}>

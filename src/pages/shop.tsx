@@ -167,8 +167,8 @@ export default function Shop({ presetTags = [] }: ShopProps) {
             {checkedTags.length > 0 && (
               <>
                 <ul className={styles.checkedTagsList}>
-                  {checkedTags.map((item) => (
-                    <Tag tag={item} refFunction={null} onChange={uncheckTag} />
+                  {checkedTags.map((tag) => (
+                    <Tag key={tag} tag={tag} refFunction={null} onChange={uncheckTag} />
                   ))}
                 </ul>
               </>
@@ -206,6 +206,7 @@ export default function Shop({ presetTags = [] }: ShopProps) {
           <ul className={styles.tagsTypeBlock}>
             {tagsTypeColor.map((tag) => (
               <Tag
+                key={tag.id}
                 tag={tag}
                 refFunction={(element: HTMLInputElement) => (tagsRef.current[tag.id] = element)}
                 onChange={handleTags}
@@ -216,6 +217,7 @@ export default function Shop({ presetTags = [] }: ShopProps) {
           <ul className={styles.tagsTypeBlock}>
             {tagsTypeReason.map((tag) => (
               <Tag
+                key={tag.id}
                 tag={tag}
                 refFunction={(element: HTMLInputElement) => (tagsRef.current[tag.id] = element)}
                 onChange={handleTags}
@@ -226,6 +228,7 @@ export default function Shop({ presetTags = [] }: ShopProps) {
           <ul className={styles.tagsTypeBlock}>
             {tagsTypeFor.map((tag) => (
               <Tag
+                key={tag.id}
                 tag={tag}
                 refFunction={(element: HTMLInputElement) => (tagsRef.current[tag.id] = element)}
                 onChange={handleTags}
@@ -236,6 +239,7 @@ export default function Shop({ presetTags = [] }: ShopProps) {
           <ul className={styles.tagsTypeBlock}>
             {tagsTypeHero.map((tag) => (
               <Tag
+                key={tag.id}
                 tag={tag}
                 refFunction={(element: HTMLInputElement) => (tagsRef.current[tag.id] = element)}
                 onChange={handleTags}
@@ -246,6 +250,7 @@ export default function Shop({ presetTags = [] }: ShopProps) {
           <ul className={styles.tagsTypeBlock}>
             {tagsTypeRest.map((tag) => (
               <Tag
+                key={tag.id}
                 tag={tag}
                 refFunction={(element: HTMLInputElement) => (tagsRef.current[tag.id] = element)}
                 onChange={handleTags}
